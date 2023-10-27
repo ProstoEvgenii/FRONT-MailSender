@@ -1,8 +1,20 @@
 
-export const makeRequest = async function logMovies() {
-    const response = await fetch("/api");
-    this.Static.records = await response.json();
-    console.log('=1e9057=',123,this.Static.records)
-    this.init()
-  }
- 
+export const makeRequest = async function () {
+  const response = await fetch("/api");
+  this.Static.records = await response.json();
+  this.init()
+}
+export const updateBD = async function () {
+  const response = await fetch("/api/upload", {
+    method: "POST",
+    body: this.Static.formData
+  });
+  this.Static.usersAdded = await response.json()
+  this.fn("makeRequest")
+  // if (!response.ok) {
+  //   this.init()
+  //   throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
+  // }
+  this.init()
+}
+

@@ -1,68 +1,44 @@
 import { Cemjsx } from "cemjs-all"
 
 export default function () {
-  console.log('=2d1657=',this.Static.records)
-    return (
-      <div class="home home_container">
-        <div class="dashboard">
-          <div>В коллекции users: {this.Static.records.count} записей</div>
-          {/* <input ref="inputField" type="text" /> */}
-          <button
-            onclick={async () => {
-              if (this.Static.data != "") {
-                const response = await fetch("/api/updateBD", {
-                  method: "POST",
-                  body: JSON.stringify([
-                    {
-                     "Фамилия": "МЕЛИКЯН",
-                     "Имя": "НИКОЛАЙ",
-                     "Отчество": "ГАЙКОВИЧ",
-                     "Дата рождения": "10\/20\/1983",
-                     "E-mail": "evgeny.ryabov@bk.ru"
-                    },
-                    {
-                      "Фамилия": "МЕЛИКЯН",
-                      "Имя": "Роман",
-                      "Отчество": "ГАЙКОВИЧ",
-                      "Дата рождения": "10\/20\/1983",
-                      "E-mail": "1qqevgeny.ryabov@bk.ru"
-                     },
-                    {
-                     "Фамилия": "Ширин",
-                     "Имя": "Антон",
-                     "Отчество": "Викторович",
-                     "Дата рождения": "10\/24\/2004",
-                     "E-mail": "makaskef@bk.ru"
-                    },
-                    {
-                     "Фамилия": "Куликов",
-                     "Имя": "Олег",
-                     "Отчество": "Александрович",
-                     "Дата рождения": "01\/20\/1989",
-                     "E-mail": "jackpen@bk.ru"
-                    },
-                    {
-                     "Фамилия": "Русаневич",
-                     "Имя": "Олег",
-                     "Отчество": "Валентинович",
-                     "Дата рождения": "10\/25\/1969",
-                     "E-mail": "makaskef@bk.ru"
-                    }
-                ])
-                });
-                if (!response.ok) {
-                  throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
-                }
-                let result = await response.json()
-                console.log('=2ec36d=', result)
-              }
-            }}
-  
-  
-          >
-            Отправить
-          </button>
-        </div>
-      </div >
-    )
-  }
+  // console.log('=2d1657=', this.Static.records)
+  // console.log('=629acd=',this.Static.usersAdded.count)
+  return (
+    <div class="home home_container">
+      <div class="dashboard">
+        <div>В коллекции users: {this.Static.records.count} записей</div>
+        <br />
+        <input ref="inputField" type="file" accept=".json"
+          onchange={() => {
+            if (this.Ref.inputField.files[0].type == "application/json") {
+              this.Static.formData = new FormData();
+              this.Static.formData.append("jsonFile", this.Ref.inputField.files[0])
+
+            }
+          }}
+        />
+        <button
+          onclick={() => {
+            // console.log('=f5ce4c=', this.Ref.inputField.files)
+            if (this.Static.formData) {
+              this.fn("updateBD")
+              // this.fn("makeRequest")
+              this.Ref.inputField.value = ""
+              this.Static.formData = null
+            }
+
+
+          }}
+        >
+          Отправить
+        </button>
+      </div>
+      <br />
+      <div>
+        {
+          this.Static.usersAdded.count == null ? <div></div> :
+          <div>Пользователей добавлено: {this.Static.usersAdded.count}</div>
+        }</div>
+    </div >
+  )
+}
