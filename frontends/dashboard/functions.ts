@@ -1,7 +1,8 @@
 
 export const makeRequest = async function () {
   const response = await fetch("/api");
-  this.Static.records = await response.json();
+  this.Static.record = await response.json()
+  this.Static.record
   this.init()
 }
 export const updateBD = async function () {

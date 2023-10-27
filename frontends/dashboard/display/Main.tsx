@@ -6,7 +6,14 @@ export default function () {
   return (
     <div class="home home_container">
       <div class="dashboard">
-        <div>В коллекции users: {this.Static.records.count} записей</div>
+        <div>
+          {
+            this.Static.records.count ==  ? <div></div> :
+            <div>В коллекции users: {this.Static.records.count} записей</div>
+          }
+        
+        </div>
+        
         <br />
         <input ref="inputField" type="file" accept=".json"
           onchange={() => {
