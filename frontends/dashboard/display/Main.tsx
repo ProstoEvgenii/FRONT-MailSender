@@ -11,7 +11,11 @@ export default function () {
             this.Static.records.lenght ? <div></div> :
               this.Static.records.map((item) => {
                 return (
-                  <div>В коллекции users: {item.count} записей</div>
+                  <div>
+                    <div>В коллекции users: {item.count} записей</div>
+                    <div>Дней рождений сегодня: {item.countBirtdays} </div>
+                  </div>
+
                 )
 
               })
