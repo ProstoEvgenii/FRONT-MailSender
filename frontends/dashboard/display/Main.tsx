@@ -8,12 +8,18 @@ export default function () {
       <div class="dashboard">
         <div>
           {
-            this.Static.records.count ==  ? <div></div> :
-            <div>В коллекции users: {this.Static.records.count} записей</div>
+            this.Static.records.lenght ? <div></div> :
+              this.Static.records.map((item) => {
+                return (
+                  <div>В коллекции users: {item.count} записей</div>
+                )
+
+              })
+
           }
-        
+
         </div>
-        
+
         <br />
         <input ref="inputField" type="file" accept=".json"
           onchange={() => {
@@ -44,7 +50,7 @@ export default function () {
       <div>
         {
           this.Static.usersAdded.count == null ? <div></div> :
-          <div>Пользователей добавлено: {this.Static.usersAdded.count}</div>
+            <div>Пользователей добавлено: {this.Static.usersAdded.count}</div>
         }</div>
     </div >
   )
