@@ -65,9 +65,9 @@ export default function () {
       <div>
         {
           // console.log('=6beab1=', Переменная)
-          this.Static.record.sendEmail == "" ? <div></div> :
+          this.Static.record.sendEmailresult == "" ? <div></div> :
         <div>
-        {this.Static.record.sendEmail}
+        {this.Static.record.sendEmailresult}
         </div>
         }
       </div>

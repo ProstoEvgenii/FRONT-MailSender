@@ -1,9 +1,9 @@
 export const getURL = function () {
-  let url = "/api/Dashboard/"
+  let url = "/api/Dashboard"
   if (this.Static.params.sendAll) {
     url += "?sendAll=true"
   }
-  
+
   this.Static.records = []
   this.Static.params.sendAll = false
   return url
@@ -16,7 +16,7 @@ export const makeRequest = async function () {
   this.Static.record = await response.json()
   // this.Static.records.push(this.Static.record)
   this.init()
-  
+
   // console.log('=016d6e=',this.Static.records[0].sendEmail)
 }
 
