@@ -1,8 +1,7 @@
 import { Cemjsx } from "cemjs-all"
 
 export default function () {
-  // console.log('=2d1657=', this.Static.records)
-  // console.log('=629acd=',this.Static.usersAdded.count)
+
   return (
     <div class="home home_container">
       <div class="dashboard">
@@ -12,20 +11,18 @@ export default function () {
               this.Static.records.map((item) => {
                 return (
                   <div>
-
                     <div>В коллекции users: {item.count} записей</div>
                     <div>Дней рождений сегодня: {item.countBirtdays} </div>
                     <div></div>
                   </div>
-
                 )
-
               })
-
           }
-
         </div>
-
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <div>Отправить .json файл, чтобы обновить записи в БД</div>
         <input ref="inputField" type="file" accept=".json"
@@ -39,14 +36,12 @@ export default function () {
         />
         <button
           onclick={() => {
-            // console.log('=f5ce4c=', this.Ref.inputField.files)
             if (this.Static.formData) {
               this.fn("updateBD")
-              // this.fn("makeRequest")
               this.Ref.inputField.value = ""
               this.Static.formData = null
+              this.Static.records = []
             }
-
 
           }}
         >
@@ -58,7 +53,26 @@ export default function () {
         {
           this.Static.usersAdded.count == null ? <div></div> :
             <div>Пользователей добавлено: {this.Static.usersAdded.count}</div>
-        }</div>
+        }
+
+      </div>
+      <br />
+      <button
+        onclick={() => {
+          // console.log('=ae82dc=', this.Static.records[0].countBirtdays)
+          if (this.Static.records[0].countBirtdays != 0) {
+            console.log('=36933a=', this.Static.params.sendAll)
+            this.Static.params.sendAll = true
+            this.fn("makeRequest")
+            this.Static.params.sendAll = false
+            
+
+          }
+
+        }}
+      >
+        Поздравить всех
+      </button>
     </div >
   )
 }

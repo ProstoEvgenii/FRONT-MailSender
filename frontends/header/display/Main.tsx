@@ -19,11 +19,11 @@ export default function () {
             <li
               class={["header_menu_item", this.Static.page == "cemjs" ? "header_menu_item-active" : null]}
 
-            ><a href="/about/" onclick={this.Fn.link}>Cem JS</a>
+            ><a href="/dashboard" onclick={this.Fn.link}>Dasboard</a>
             </li>
             <li
               class={["header_menu_item", this.Static.page == "examples" ? "header_menu_item-active" : null]}
-            ><a href="https://ya.ru" onclick={this.Fn.link}>Examples</a></li>
+            ><a href="https://ya.ru" onclick={this.Fn.link}>Список пользователей</a></li>
             <li
               class={["header_menu_item", this.Static.page == "contacts" ? "header_menu_item-active" : null]}
               onclick={() => {

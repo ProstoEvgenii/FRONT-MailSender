@@ -1,8 +1,8 @@
 {
-    "url": "/dashboard",
+    "url": "/users",
     "front": [
         "header",
-        "dashboard",
+        "users",
         ""
     ]
 }
