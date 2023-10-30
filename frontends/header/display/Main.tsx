@@ -23,7 +23,7 @@ export default function () {
             </li>
             <li
               class={["header_menu_item", this.Static.page == "examples" ? "header_menu_item-active" : null]}
-            ><a href="https://ya.ru" onclick={this.Fn.link}>Список пользователей</a></li>
+            ><a href="/users" onclick={this.Fn.link}>Список пользователей</a></li>
             <li
               class={["header_menu_item", this.Static.page == "contacts" ? "header_menu_item-active" : null]}
               onclick={() => {

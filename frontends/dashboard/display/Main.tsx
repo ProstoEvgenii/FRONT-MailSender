@@ -61,18 +61,32 @@ export default function () {
         onclick={() => {
           // console.log('=ae82dc=', this.Static.records[0].countBirtdays)
           if (this.Static.records[0].countBirtdays != 0) {
-            console.log('=36933a=', this.Static.params.sendAll)
+            // console.log('=36933a=', this.Static.params.sendAll)
+            
             this.Static.params.sendAll = true
             this.fn("makeRequest")
-            this.Static.params.sendAll = false
             
-
+            // console.log('=20d8d4=',this.Static.records.sendEmail)
           }
 
         }}
       >
         Поздравить всех
       </button>
+      <div>
+        {
+          this.Static.records.lenght ? <div></div> :
+          this.Static.records.map((item) => {
+            return (
+              <div>
+                <div>В коллекции users: {item.count} записей</div>
+                <div>Дней рождений сегодня: {item.countBirtdays} </div>
+                <div></div>
+              </div>
+            )
+          })
+        }
+      </div>
     </div >
   )
 }
