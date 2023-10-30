@@ -8,14 +8,15 @@ export const getURL = function () {
   this.Static.params.sendAll = false
   return url
 }
+
 export const makeRequest = async function () {
   let url = this.fn("getURL")
 
   const response = await fetch(url);
   this.Static.record = await response.json()
-  this.Static.records.push(this.Static.record)
+  // this.Static.records.push(this.Static.record)
   this.init()
-  console.log('=8a9802=', this.Static.records)
+  
   // console.log('=016d6e=',this.Static.records[0].sendEmail)
 }
 

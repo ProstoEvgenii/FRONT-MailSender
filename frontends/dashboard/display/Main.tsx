@@ -6,18 +6,12 @@ export default function () {
     <div class="home home_container">
       <div class="dashboard">
         <div>
-          {
-            this.Static.records.lenght ? <div></div> :
-              this.Static.records.map((item) => {
-                return (
-                  <div>
-                    <div>В коллекции users: {item.count} записей</div>
-                    <div>Дней рождений сегодня: {item.countBirtdays} </div>
-                    <div></div>
-                  </div>
-                )
-              })
-          }
+          <div>
+            <div>Пользователей: {this.Static.record.documentsCount} </div>
+            <div>Дней рождений сегодня: {this.Static.record.countBirtdays} </div>
+            <div>Поздравлено сегодня: {this.Static.record.countLogs} </div>
+            <div></div>
+          </div>
         </div>
         <br />
         <br />
@@ -51,7 +45,7 @@ export default function () {
       <br />
       <div>
         {
-          this.Static.usersAdded.count == null ? <div></div> :
+          this.Static.usersAdded.documentsInserted == null ? <div></div> :
             <div>Пользователей добавлено: {this.Static.usersAdded.count}</div>
         }
 
@@ -59,32 +53,22 @@ export default function () {
       <br />
       <button
         onclick={() => {
-          // console.log('=ae82dc=', this.Static.records[0].countBirtdays)
-          if (this.Static.records[0].countBirtdays != 0) {
-            // console.log('=36933a=', this.Static.params.sendAll)
-            
+          if (this.Static.record.countBirtdays != 0) {   
             this.Static.params.sendAll = true
             this.fn("makeRequest")
-            
-            // console.log('=20d8d4=',this.Static.records.sendEmail)
+            console.log('=95b5fc=',this.Static.record)
           }
-
         }}
       >
         Поздравить всех
       </button>
       <div>
         {
-          this.Static.records.lenght ? <div></div> :
-          this.Static.records.map((item) => {
-            return (
-              <div>
-                <div>В коллекции users: {item.count} записей</div>
-                <div>Дней рождений сегодня: {item.countBirtdays} </div>
-                <div></div>
-              </div>
-            )
-          })
+          // console.log('=6beab1=', Переменная)
+          this.Static.record.sendEmail == "" ? <div></div> :
+        <div>
+        {this.Static.record.sendEmail}
+        </div>
         }
       </div>
     </div >
