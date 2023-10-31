@@ -14,18 +14,17 @@ export const makeRequest = async function () {
 
   const response = await fetch(url);
   this.Static.record = await response.json()
-  // this.Static.records.push(this.Static.record)
   this.init()
 
-  // console.log('=016d6e=',this.Static.records[0].sendEmail)
 }
 
 export const updateBD = async function () {
-  const response = await fetch("/api/Dashboard/upload", {
+  const response = await fetch("/api/Dashboard", {
     method: "POST",
     body: this.Static.formData
   });
   this.Static.usersAdded = await response.json()
+  console.log('=6dd074=',this.Static.usersAdded)
   this.fn("makeRequest")
   // if (!response.ok) {
   //   this.init()

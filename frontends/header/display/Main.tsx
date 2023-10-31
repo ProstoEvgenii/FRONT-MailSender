@@ -24,13 +24,9 @@ export default function () {
             <li
               class={["header_menu_item", this.Static.page == "examples" ? "header_menu_item-active" : null]}
             ><a href="/users" onclick={this.Fn.link}>Список пользователей</a></li>
-            <li
-              class={["header_menu_item", this.Static.page == "contacts" ? "header_menu_item-active" : null]}
-              onclick={() => {
-                this.Static.page = "contacts"
-                this.init()
-              }}
-            >Contacts</li>
+             <li
+              class={["header_menu_item", this.Static.page == "examples" ? "header_menu_item-active" : null]}
+            ><a href="/settings" onclick={this.Fn.link}>Настройки</a></li>
           </ul>
         </nav>
       </div>

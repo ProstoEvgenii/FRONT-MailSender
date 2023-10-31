@@ -34,7 +34,7 @@ export default function () {
               this.fn("updateBD")
               this.Ref.inputField.value = ""
               this.Static.formData = null
-              this.Static.records = []
+              // this.Static.records = []
             }
 
           }}
@@ -46,17 +46,17 @@ export default function () {
       <div>
         {
           this.Static.usersAdded.documentsInserted == null ? <div></div> :
-            <div>Пользователей добавлено: {this.Static.usersAdded.count}</div>
+            <div>Пользователей добавлено: {this.Static.usersAdded.documentsInserted}</div>
         }
 
       </div>
       <br />
       <button
         onclick={() => {
-          if (this.Static.record.countBirtdays != 0) {   
+          if (this.Static.record.countBirtdays != 0) {
             this.Static.params.sendAll = true
             this.fn("makeRequest")
-            console.log('=95b5fc=',this.Static.record)
+            console.log('=95b5fc=', this.Static.record)
           }
         }}
       >
@@ -66,9 +66,9 @@ export default function () {
         {
           // console.log('=6beab1=', Переменная)
           this.Static.record.sendEmailresult == "" ? <div></div> :
-        <div>
-        {this.Static.record.sendEmailresult}
-        </div>
+            <div>
+              {this.Static.record.sendEmailresult}
+            </div>
         }
       </div>
     </div >
