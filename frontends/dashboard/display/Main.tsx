@@ -56,7 +56,6 @@ export default function () {
           if (this.Static.record.countBirtdays != 0) {
             this.Static.params.sendAll = true
             this.fn("makeRequest")
-            console.log('=95b5fc=', this.Static.record)
           }
         }}
       >
@@ -64,7 +63,6 @@ export default function () {
       </button>
       <div>
         {
-          // console.log('=6beab1=', Переменная)
           this.Static.record.sendEmailresult == "" ? <div></div> :
             <div>
               {this.Static.record.sendEmailresult}
