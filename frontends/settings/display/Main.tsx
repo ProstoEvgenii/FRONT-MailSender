@@ -96,6 +96,56 @@ export default function () {
                 <div class="settings__fields__schedule">
                     <div class="togle_row" >
                         Привет тумблер
+                        <div class="switch">
+                            <div class="switch__1">
+                                <input id="switch-1" type="checkbox" />
+                                <label for="switch-1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input_row">
+                        <p>Сообщение будет отправлено в</p>
+                        <input
+                            value="12:00"
+                            placeholder="E-mail"
+                            ref="inputEmail"
+                            class="field__input"
+                            type="text"
+                            oninput={(e) => {
+                                this.Static.settingsForm.emailLogin = e.target.value
+                            }}
+                        />
+                        <div>
+                            {
+                                this.Static.postResponse.documentsInserted == 0 ? <div></div> :
+                                    <div>
+                                        Настройки cохранены
+                                    </div>
+                            }
+                        </div>
+                        <div>
+                            {
+                                this.Static.postResponse.documentsModified == 0 ? <div></div> :
+                                    <div>
+                                        Настройки обновлены
+                                    </div>
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="settings__fields__container" >
+                <div class="settings__fields__schedule">
+                    <div class="togle_row" >
+                        Привет тумблер
+                        <div class="switch">
+                            <div class="switch__1">
+                                <input id="switch-1" type="checkbox" />
+                                <label for="switch-1"></label>
+                            </div>
+                        </div>
                     </div>
                     <div class="input_row">
                         <p>Сообщение будет отправлено в</p>

@@ -23,27 +23,14 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     box-sizing: inherit;
 }
 
-// .components {
-//     width: 75rem;
-//     height: 40rem;
-//     border-radius: 3rem;
-//     box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
-//               -.2rem -.2rem 1.8rem var(--white);
-//     padding: 4rem;
-//     display: grid;
-//     grid-template-columns: 17.6rem 19rem 20.4rem;
-//     grid-template-rows: repeat(autofit, min-content);
-//     grid-column-gap: 5rem;
-//     grid-row-gap: 2.5rem;
-//     align-items: center;
-//    }
-.settings {
 
+.settings {
     .settings__fields__container {
         box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
-        -.2rem -.2rem 1.8rem var(--white);
+            -.2rem -.2rem 1.8rem var(--white);
         width: fit-content;
         border-radius: 3rem;
+
         .settings__fields {
             padding: 4rem;
             display: grid;
@@ -59,6 +46,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
             margin-top: 40px;
             width: fit-content;
         }
+
         .field__input {
             width: 17.4rem;
             height: 3rem;
@@ -115,14 +103,20 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
     .settings__fields__container {
         box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
-        -.2rem -.2rem 1.8rem var(--white);
+            -.2rem -.2rem 1.8rem var(--white);
         width: fit-content;
         border-radius: 3rem;
+
         .settings__fields__schedule {
+
+          
+            align-items: start;
             padding: 4rem;
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(2, 1fr);
+            // display: flex;
+            flex-direction: column;
+            align-items: start;
+            // grid-template-columns: repeat(1, 1fr);
+            // grid-template-rows: repeat(2, 1fr);
             /* 2 ряда с равными долями */
             gap: 10px;
             /* Отступ между элементами */
@@ -133,39 +127,109 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
             margin-top: 40px;
             width: fit-content;
 
-
-
-            .input_row{
+            .togle_row {
                 display: flex;
                 align-items: center;
+
+                .switch {
+                    margin-left: 10px;
+                    grid-column: 1 / 2;
+                    display: grid;
+                    grid-template-columns: repeat(2, min-content);
+                    grid-gap: 3rem;
+                    justify-self: center;
+
+                    input {
+                        display: none;
+                    }
+
+                    &__1 {
+                        width: 6rem;
+
+                        label {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            height: 3rem;
+                            box-shadow: $shadow;
+                            background: rgba(255, 255, 255, 0);
+                            position: relative;
+                            cursor: pointer;
+                            border-radius: 1.6rem;
+
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                left: .4rem;
+                                width: 2.1rem;
+                                height: 2.1rem;
+                                border-radius: 50%;
+                                background: var(--greyDark);
+                                transition: all .4s ease;
+                            }
+
+                            &::before {
+                                content: '';
+                                width: 100%;
+                                height: 100%;
+                                border-radius: inherit;
+                                background: linear-gradient(330deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+                                opacity: 0;
+                                transition: all .4s ease;
+                            }
+                        }
+                    }
+
+                    & input:checked {
+                        &~label {
+                            &::before {
+                                opacity: 1;
+                            }
+
+                            &::after {
+                                left: 57%;
+                                background: var(--greyLight-1);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+            .input_row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 .field__input {
+                    margin-left: 10px;
                     width: 5rem;
                     height: 3rem;
                     border: none;
                     border-radius: 1rem;
                     font-size: 1rem;
-                    padding-left: 1.4rem;
+                    padding-left:0.7rem;
                     box-shadow: $inner-shadow;
                     background: none;
                     font-family: inherit;
                     color: var(--greyDark);
-        
+
                     &::placeholder {
                         color: var(--greyLight-3);
                     }
-        
+
                     &:focus {
                         outline: none;
                         box-shadow: $shadow;
                     }
                 }
             }
-            
-        
+
+
         }
 
 
-        
+
 
         // .btn {
         //     width: 15rem;
