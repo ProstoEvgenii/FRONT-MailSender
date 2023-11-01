@@ -5,7 +5,7 @@ export default function () {
         <div class="settings">
 
             <div class="settings__fields__container" >
-                <p class="settingsTitle">Настройка</p>
+                <p class="settingsTitle">Настройка почты</p>
                 <div class="settings__fields">
                     <input
                         value={this.Static.record.template ? this.Static.settingsForm.template = this.Static.record.template : ""}
@@ -91,6 +91,7 @@ export default function () {
             </div>
             <div class="container2">
                 <div class="settings__fields__container" >
+                    <p class="settingsTitle">Расписание запуска</p>
                     <div class="settings__fields__schedule">
                         <div class="togle_row" >
                             Автоматический режим отправки сообщений
@@ -135,13 +136,16 @@ export default function () {
                     </div>
                 </div>
                 <div class="settings__fields__container" >
+                    <p class="settingsTitle">Загрузить базу данных</p>
                     <div class="settings__fields__inputfile">
                         <div class="togle_row" >
-
                             <button class="butn btn__passive">Выберите файл</button>
                             <p>Файл не выбран</p>
-
                         </div>
+                        <br />
+                        <p>
+                            Последние обновление базы: 01.11.2023
+                        </p>
 
 
                     </div>
