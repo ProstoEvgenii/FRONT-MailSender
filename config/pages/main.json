@@ -1,7 +1,6 @@
 {
     "url": "/",
     "front": [
-        "header",
         "home",
         "footer"
     ]

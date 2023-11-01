@@ -5,7 +5,7 @@ import space from '@svg/space.svg'
 export default function () {
   return (
     <div class="home home_container">
-      <div class="home_email">
+      {/* <div class="home_email">
         <input ref="inputField" type="text" />
         <button
           onclick={async () => {
@@ -27,7 +27,7 @@ export default function () {
         >
           Отправить
         </button>
-      </div>
+      </div> */}
     </div >
   )
 }
