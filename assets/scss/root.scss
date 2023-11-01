@@ -28,12 +28,9 @@ html {
 body {
     height: 100%;
     margin: 0px;
-    padding: 0 !important;
+    padding: 0;
     overflow: overlay;
-    color: $white;
-    // background-image: url('images/background/back.jpg');
-    background-position: center center;
-    background-size: cover;
+    color: var(--primary);
     width: 100%;
     font-family: 'Montserrat';
 

@@ -3,8 +3,10 @@ import Navigation from "./navigation"
 
 export const display = function () {
     return (
-        <div>
-            <Navigation />
+        <div class="footer">
+            <div class="wrapper">
+                <Navigation />
+            </div>
         </div>
     )
 }
