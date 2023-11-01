@@ -1,0 +1,57 @@
+@import 'utils/variables.scss';
+@import 'utils/globalClass.scss';
+
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+.info {
+
+  &_desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 1.6rem;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &_preview {
+    padding-top: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1vw;
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 125%;
+    }
+
+    img {
+      height: 500px;
+      border: 1px solid var(--primary);
+      border-radius: 0.5rem;
+    }
+  }
+
+  &_send {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5vw;
+    gap: 1.5vw;
+  }
+}

@@ -1,32 +1,18 @@
 @import 'utils/variables.scss';
+@import 'utils/globalClass.scss';
 
 .footer {
     margin-top: 100px;
     flex: 0 0 auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     z-index: 500;
     height: 80px;
-    border-top: 1px solid rgba(43, 43, 43, 0.568);
+    border-top: 1px solid var(--white);
     background: inherit;
     overflow: hidden;
     background: var(--primary);
     color: var(--white);
 
-    &::before {
-        position: absolute;
-        content: '';
-        background: inherit;
-        left: -25px;
-        right: 0;
-        top: -25px;
-        bottom: -5px;
-        box-shadow: inset 0 0 0 3000px rgba(150, 150, 150, 0.192);
-        filter: blur(2px);
-        z-index: 0;
-    }
 
     &_inner {
         position: relative;

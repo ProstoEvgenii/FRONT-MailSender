@@ -1,11 +1,11 @@
 import { Cemjsx } from "cemjs-all"
 import lock from '@svg/ann/lock.svg'
-import search from '@svg/ann/search.svg'
+import email from '@svg/ann/email.svg'
 import eye from '@svg/ann/eye.svg'
 
 export default function () {
   return (
-    <main class="home">
+    <main class="home ">
       <div class="wrapper home_inner">
         <h1 class="title_main">Система отправки поздравительных писем</h1>
         <div class="home_form">
@@ -13,7 +13,7 @@ export default function () {
           <div class="input_field">
             <input type="email" placeholder="Введите email:" class="input_field__input" />
             <div class="input_field__icon">
-              <img src={search} alt="Электронная почта" />
+              <img src={email} alt="Электронная почта" />
             </div>
           </div>
 
