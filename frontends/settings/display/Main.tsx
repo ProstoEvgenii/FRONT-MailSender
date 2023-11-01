@@ -1,11 +1,11 @@
 import { Cemjsx } from "cemjs-all"
 export default function () {
+    // console.log('=c937e1=',this.Static.postResponse)
     return (
         <div class="home home_container">
             <div>
-                {/* <p><b>Название шаблона письма:</b></p> */}
                 <input
-                    value={this.Static.record.template ? this.Static.record.template : ""}
+                    value={this.Static.record.template ? this.Static.settingsForm.template = this.Static.record.template : ""}
                     placeholder="Название шаблона письма"
                     ref="inputTemplateName"
                     type="text"
@@ -15,13 +15,12 @@ export default function () {
                 />
                 <br />
                 <input
-                    value={this.Static.record.emailLogin ? this.Static.record.emailLogin : ""}
+                    value={this.Static.record.emailLogin ? this.Static.settingsForm.emailLogin = this.Static.record.emailLogin : ""}
                     placeholder="E-mail"
                     ref="inputEmail"
                     type="text"
                     oninput={(e) => {
                         this.Static.settingsForm.emailLogin = e.target.value
-
                     }}
                 />
                 <br />
@@ -36,24 +35,21 @@ export default function () {
                 <br />
                 <input
                     placeholder="smtp"
-                    value={this.Static.record.smtp ? this.Static.record.smtp : ""}
+                    value={this.Static.record.smtp ? this.Static.settingsForm.smtp = this.Static.record.smtp : ""}
                     ref="inputSmtp"
                     type="text"
                     oninput={(e) => {
-
                         this.Static.settingsForm.smtp = e.target.value
-
                     }}
                 />
                 <br />
                 <input
                     placeholder="Порт"
-                    value={this.Static.record.port ? this.Static.record.port : ""}
+                    value={this.Static.record.port ? this.Static.settingsForm.port = this.Static.record.port : ""}
                     ref="inputPort"
                     type="text"
                     oninput={(e) => {
                         this.Static.settingsForm.port = e.target.value
-
                     }}
                 />
                 <br />
@@ -64,6 +60,25 @@ export default function () {
                 >
                     Сохранить настройки
                 </button>
+                <div></div>
+                <br />
+                <div>
+                    {
+                        this.Static.postResponse.documentsInserted == 0 ? <div></div> :
+                            <div>
+                                Настройки cохранены
+                            </div>
+                    }
+                </div>
+                <div>
+                    {
+                        this.Static.postResponse.documentsModified == 0 ? <div></div> :
+                            <div>
+                                Настройки обновлены
+                            </div>
+                    }
+                </div>
+
             </div>
         </div>
 

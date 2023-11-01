@@ -61,6 +61,7 @@ export default function () {
       >
         Поздравить всех
       </button>
+      <br />
       <div>
         {
           this.Static.record.sendEmailresult == "" ? <div></div> :

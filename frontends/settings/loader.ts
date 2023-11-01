@@ -7,5 +7,9 @@ export const loader = function () {
         smtp: "",
         port: 0
     }
+    this.Static.postResponse = {
+        documentsInserted: 0,
+        documentsModified: 0
+    }
     return
 }

@@ -14,7 +14,7 @@ export const makeRequest = async function () {
 
     const response = await fetch(url);
     this.Static.record = await response.json()
-    console.log('=6f7e12=',this.Static.record )
+    console.log('=6f7e12=', this.Static.record)
     this.init()
 
 }
@@ -40,6 +40,7 @@ export const updateSettings = async function () {
         body: JSON.stringify(this.Static.settingsForm)
     });
     this.Static.postResponse = await response.json()
+    console.log('=150db9=', this.Static.postResponse)
     // this.fn("makeRequest")
     // if (!response.ok) {
     //   this.init()
