@@ -3,8 +3,8 @@ export default function () {
     // console.log('=c937e1=',this.Static.postResponse)
     return (
         <div class="settings">
+
             <div class="settings__fields__container" >
-    
                 <div class="settings__fields">
                     <input
                         value={this.Static.record.template ? this.Static.settingsForm.template = this.Static.record.template : ""}
@@ -86,6 +86,48 @@ export default function () {
                                 </div>
                         }
                     </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="settings__fields__container" >
+                <div class="settings__fields__schedule">
+                    <div class="togle_row" >
+                        Привет тумблер
+                    </div>
+                    <div class="input_row">
+                        <p>Сообщение будет отправлено в</p>
+                        <input
+                            value="12:00"
+                            placeholder="E-mail"
+                            ref="inputEmail"
+                            class="field__input"
+                            type="text"
+                            oninput={(e) => {
+                                this.Static.settingsForm.emailLogin = e.target.value
+                            }}
+                        />
+                        <div>
+                            {
+                                this.Static.postResponse.documentsInserted == 0 ? <div></div> :
+                                    <div>
+                                        Настройки cохранены
+                                    </div>
+                            }
+                        </div>
+                        <div>
+                            {
+                                this.Static.postResponse.documentsModified == 0 ? <div></div> :
+                                    <div>
+                                        Настройки обновлены
+                                    </div>
+                            }
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>

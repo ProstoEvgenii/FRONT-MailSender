@@ -40,12 +40,11 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 .settings {
 
     .settings__fields__container {
-
-        
+        box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
+        -.2rem -.2rem 1.8rem var(--white);
+        width: fit-content;
+        border-radius: 3rem;
         .settings__fields {
-            border-radius: 3rem;
-            box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
-                -.2rem -.2rem 1.8rem var(--white);
             padding: 4rem;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -84,7 +83,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
         .btn {
             width: 15rem;
-            height: 4rem;
+            height: 3rem;
             border-radius: 1rem;
             box-shadow: $shadow;
             justify-self: center;
@@ -112,6 +111,92 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
                 }
             }
         }
+    }
+
+    .settings__fields__container {
+        box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
+        -.2rem -.2rem 1.8rem var(--white);
+        width: fit-content;
+        border-radius: 3rem;
+        .settings__fields__schedule {
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            /* 2 ряда с равными долями */
+            gap: 10px;
+            /* Отступ между элементами */
+            justify-items: center;
+            /* Центрировать элементы по горизонтали */
+            align-items: center;
+            /* Центрировать элементы по вертикали */
+            margin-top: 40px;
+            width: fit-content;
+
+
+
+            .input_row{
+                display: flex;
+                align-items: center;
+                .field__input {
+                    width: 5rem;
+                    height: 3rem;
+                    border: none;
+                    border-radius: 1rem;
+                    font-size: 1rem;
+                    padding-left: 1.4rem;
+                    box-shadow: $inner-shadow;
+                    background: none;
+                    font-family: inherit;
+                    color: var(--greyDark);
+        
+                    &::placeholder {
+                        color: var(--greyLight-3);
+                    }
+        
+                    &:focus {
+                        outline: none;
+                        box-shadow: $shadow;
+                    }
+                }
+            }
+            
+        
+        }
+
+
+        
+
+        // .btn {
+        //     width: 15rem;
+        //     height: 3rem;
+        //     border-radius: 1rem;
+        //     box-shadow: $shadow;
+        //     justify-self: center;
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     cursor: pointer;
+        //     transition: .3s ease;
+        //     border: none;
+
+        //     &__primary {
+        //         background: var(--primary);
+        //         box-shadow: inset .2rem .2rem 1rem var(--primary-light),
+        //             inset -.2rem -.2rem 1rem var(--primary-dark),
+        //             $shadow;
+        //         color: var(--greyLight-1);
+
+        //         &:hover {
+        //             color: var(--white);
+        //         }
+
+        //         &:active {
+        //             box-shadow: inset .2rem .2rem 1rem var(--primary-dark),
+        //                 inset -.2rem -.2rem 1rem var(--primary-light);
+        //         }
+        //     }
+        // }
     }
 
 
