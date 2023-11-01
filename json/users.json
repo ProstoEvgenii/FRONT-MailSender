@@ -1,0 +1,30 @@
+[
+  {
+    "lastName": "МЕЛИКЯН",
+    "firstName": "АРМЕН",
+    "middleName": "ГАЙКОВИЧ",
+    "birthday": "10\/20\/1983",
+    "email": "evgeny.ryabov@bk.ru"
+  },
+  {
+    "lastName": "Ширин",
+    "firstName": "Антон",
+    "middleName": "Викторович",
+    "birthday": "11\/01\/2004",
+    "email": "qqqq@bk.ru"
+  },
+  {
+    "lastName": "Куликов",
+    "firstName": "Олег",
+    "middleName": "Александрович",
+    "birthday": "01\/20\/1989",
+    "email": "jackpen@bk.ru"
+  },
+  {
+    "lastName": "Рябов",
+    "firstName": "Олег",
+    "middleName": "Валентинович",
+    "birthday": "11\/01\/1969",
+    "email": "makaskef@bk.ru"
+  }
+]
