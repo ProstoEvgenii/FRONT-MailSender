@@ -88,10 +88,7 @@ export default function () {
                     </div>
                 </div>
             </div>
-
-
-
-
+            
             <div class="settings__fields__container" >
                 <div class="settings__fields__schedule">
                     <div class="togle_row" >
@@ -139,7 +136,7 @@ export default function () {
             <div class="settings__fields__container" >
                 <div class="settings__fields__schedule">
                     <div class="togle_row" >
-                        Привет тумблер
+                        Автоматический режим отправки сообщений
                         <div class="switch">
                             <div class="switch__1">
                                 <input id="switch-1" type="checkbox" />
