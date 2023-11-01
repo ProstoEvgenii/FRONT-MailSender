@@ -5,6 +5,7 @@ export default function () {
         <div class="settings">
 
             <div class="settings__fields__container" >
+                <p class="settingsTitle">Настройка</p>
                 <div class="settings__fields">
                     <input
                         value={this.Static.record.template ? this.Static.settingsForm.template = this.Static.record.template : ""}

@@ -1,28 +1,15 @@
-:root {
-    --primary-light: #8abdff;
-    --primary: #6d5dfc;
-    --primary-dark: #5b0eeb;
-
-    --white: #FFFFFF;
-    --greyLight-1: #E4EBF5;
-    --greyLight-2: #c8d0e7;
-    --greyLight-3: #bec8e4;
-    --greyDark: #9baacf;
-}
+@import 'utils/variables.scss';
 
 $shadow: .3rem .3rem .6rem var(--greyLight-2),
     -.2rem -.2rem .5rem var(--white);
 $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
+.settingsTitle{
+    font-size: clamp(1.25rem, 3.5vw, 2rem);
+    font-weight: 700;
 
+}
 
 .settings {
     margin-top: 100px;
@@ -36,10 +23,11 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
             -.2rem -.2rem 1.8rem var(--white);
         width: fit-content;
         border-radius: 3rem;
+        padding: 3rem;
 
         .settings__fields {
             margin-top: 20px;
-            padding: 4rem;
+            
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
@@ -126,7 +114,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
 
             align-items: start;
-            padding: 4rem;
+            // padding: 4rem;
             flex-direction: column;
             align-items: start;
 
@@ -240,7 +228,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
         .settings__fields__inputfile {
             align-items: start;
-            padding: 4rem;
+            // padding: 4rem;
             flex-direction: column;
             align-items: start;
 
