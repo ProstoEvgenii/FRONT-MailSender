@@ -1,4 +1,5 @@
 export const loader = function () {
+    this.fn("printHello")
     this.fn("makeRequest")
     this.Static.settingsForm = {
         template: "",

@@ -20,11 +20,6 @@ export const makeRequest = async function () {
 }
 
 
-
-
-
-
-
 export const validateForm = function () {
     if (this.Static.settingsForm.emailLogin === "" || this.Static.settingsForm.emailPass === "" || this.Static.settingsForm.smtp === "" || this.Static.settingsForm.port === 0 || this.Static.settingsForm.port === "") {
         console.log('=386d17=', "Форма не заполнена полностью")
@@ -48,3 +43,4 @@ export const updateSettings = async function () {
     // }
     this.init()
 }
+

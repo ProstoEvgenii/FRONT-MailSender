@@ -6,17 +6,42 @@ export default function () {
   return (
     <div class="info_inner">
       <div class="info_desc">
-        <p>Всего отправлено: <span class="bold">1200</span></p>
-        <p>Всего записей:  <span class="bold">456</span></p>
+        <p>Пользователей:  <span class="bold">456</span></p>
+        <p>Всего отправлено писем: <span class="bold">1200</span></p>
+      </div>
+      <div class="info_settings">
+        <div class="info_settings__schedule">
+          <div class="toggle_row" >
+            Автоматическая отправка
+            <div class="switch">
+              <div class="switch__1">
+                <input id="switch-1" type="checkbox" />
+                <label for="switch-1"></label>
+              </div>
+            </div>
+            <input
+              value="12:00"
+              placeholder="E-mail"
+              ref="inputEmail"
+              class="field__input"
+              type="text"
+              oninput={(e) => {
+                // this.Static.settingsForm.emailLogin = e.target.value
+              }}
+            />
 
+          </div>
+          
 
+        </div>
+        <div>
+        
+        </div>
       </div>
 
       <div class="info_preview">
         <p class="info_preview__title">Превью письма</p>
         <img src={letter} alt="Образец письма" />
-
-
       </div>
 
       <div class="info_send">
