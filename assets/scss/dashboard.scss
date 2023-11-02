@@ -34,25 +34,52 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
     p {
       font-size: 1.6rem;
-      width: 100%;
-      text-align: center;
+      text-align: right;
+    }
+    span{
+      padding-left: 10px;
+    }
+
+    &__email{
+      display: flex;
+      flex-direction: column;
     }
   }
 
   &_settings {
+margin-top: 25px;
+display: flex;
+// justify-content: space-between;
+gap: 30px;
 
 
-    &__schedule {
+    &__component {
       box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
         -.2rem -.2rem 1.8rem var(--white);
-      width: fit-content;
+      // width: fit-content;
+      width: 100%;
       border-radius: 3rem;
       padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      // justify-content: center;
+      align-items: center;
+      p {
+        font-size: 1.3rem;
+        width: 100%;
+        text-align: left;
+        font-weight: 700;
+      }
     }
 
     .toggle_row {
       display: flex;
       align-items: center;
+      p {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
     }
 
     .switch {
@@ -60,7 +87,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
       grid-column: 1 / 2;
       display: grid;
       grid-template-columns: repeat(2, min-content);
-      grid-gap: 3rem;
+      grid-gap: 1rem;
       justify-self: center;
 
       input {
@@ -118,12 +145,6 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
       }
     }
 
-
-    // .input_row {
-    //   display: flex;
-    //   align-items: center;
-    // }
-
     .field__input {
       margin-left: 10px;
       width: 5rem;
@@ -145,12 +166,6 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
         outline: none;
         box-shadow: $shadow;
       }
-    }
-
-    p {
-      font-size: 1.6rem;
-      width: 100%;
-      text-align: center;
     }
   }
 
@@ -182,6 +197,11 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     justify-content: center;
     padding-top: 1.5vw;
     gap: 1.5vw;
+  }
+  &_send__response{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
   }
 
 
