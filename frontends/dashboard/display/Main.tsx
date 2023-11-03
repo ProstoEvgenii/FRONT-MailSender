@@ -39,57 +39,87 @@ export default function () {
           <div class="toggle_row" >
             <p>Автоматическая отправка</p>
             <div class="switch">
-              <div class="switch__1">
-                <input id="switch-1" type="checkbox" />
+              {/* <div class="switch__1">
+                <input
+                  id="switch-1"
+                  type="checkbox"
+                  ref="switch"
+                  onchange={(e) => {
+                    e.target.checked 
+                  }}
+
+                />
                 <label for="switch-1"></label>
-              </div>
+              </div> */}
             </div>
+
             <input
-              value="12:00"
-              placeholder="E-mail"
-              ref="inputEmail"
+              value={this.Static.record.sendAutoAt ? this.Static.SendAutoAt = this.Static.record.sendAutoAt : ""}
+              placeholder=""
+              ref="inputTime"
               class="field__input"
               type="text"
               oninput={(e) => {
-                // this.Static.settingsForm.emailLogin = e.target.value
+                this.Static.SendAutoAt = e.target.value
+                // console.log('=dac098=',this.Static.SendAutoAt)
               }}
             />
-
+            <p class="minutes">:00</p>
+            <button
+              class="btn btn__primary"
+              onclick={() => {
+                if (this.Ref.inputTime.value != "") {
+                  // console.log('=7eb08c=', this.Ref.inputEmail.value)
+                  // this.Static.sendTo = this.Ref.inputEmail.value
+                  this.fn("makeRequest")
+                }
+              }}
+            >
+              Сохранить
+            </button>
           </div>
 
 
         </div>
         <div class="info_settings__component">
           <p>Загрузка пользователей</p>
-          <div>
-            <input ref="inputField" type="file" accept=".json"
-              onchange={() => {
-                if (this.Ref.inputField.files[0].type == "application/json") {
-                  this.Static.formData = new FormData();
-                  this.Static.formData.append("jsonFile", this.Ref.inputField.files[0])
+          <div class="users_upload">
+            <div>
+              <input
+                type="file"
+                ref="UploadUsers"
+                accept=".json"
 
-                }
-              }}
-            />
+                onchange={() => {
+                  if (this.Ref.UploadUsers.files[0].type == "application/json") {
+                    this.Static.formData = new FormData();
+                    this.Static.formData.append("jsonFile", this.Ref.UploadUsers.files[0]);
+                  }
+                }}
+              />
+            </div>
             <button
+              class="btn btn__primary"
               onclick={() => {
                 if (this.Static.formData) {
                   this.fn("updateBD")
-                  this.Ref.inputField.value = ""
+                  this.Ref.UploadUsers.value = ""
                   this.Static.formData = null
+
                 }
 
               }}
             >
-              Отправить
+              Загрузить
             </button>
-            <p>
-              {
-                this.Static.usersAdded.documentsInserted == null ? <span></span> :
-                  <span>Пользователей добавлено: {this.Static.usersAdded.documentsInserted}</span>
-              }
-            </p>
+
           </div>
+          <p>
+            {
+              this.Static.usersAdded.documentsInserted == null ? <span></span> :
+                <span class="upload_response">Пользователей добавлено: {this.Static.usersAdded.documentsInserted}</span>
+            }
+          </p>
         </div>
       </div>
       <div class="info_preview">
@@ -101,7 +131,7 @@ export default function () {
           <div class="input_field">
             <input type="email"
               placeholder="Введите email:"
-              ref="inputField"
+              ref="inputEmail"
               class="input_field__input"
             />
             <div class="input_field__icon">
@@ -111,9 +141,9 @@ export default function () {
           <button
             class="btn btn__primary"
             onclick={() => {
-              if (this.Ref.inputField.value != "") {
-                console.log('=7eb08c=', this.Ref.inputField.value)
-                this.Static.sendTo = this.Ref.inputField.value
+              if (this.Ref.inputEmail.value != "") {
+                // console.log('=7eb08c=', this.Ref.inputEmail.value)
+                this.Static.sendTo = this.Ref.inputEmail.value
                 this.fn("makeRequest")
               }
             }}
@@ -121,14 +151,14 @@ export default function () {
             Отправить
           </button>
         </div>
-        <div class = "info_send__response">
-        {
-          this.Static.record.sendEmailresult == "" ? <span></span> :
-            <span>{this.Static.record.sendEmailresult}</span>
-        }
+        <div class="info_send__response">
+          {
+            this.Static.record.sendEmailresult == "" ? <span></span> :
+              <span>{this.Static.record.sendEmailresult}</span>
+          }
+        </div>
       </div>
-      </div>
-      
+
 
     </div>
     // <div class="home section">
@@ -146,16 +176,7 @@ export default function () {
     //     <br />
     //     <br />
     //     <br />
-    //     <div>Отправить .json файл, чтобы обновить записи в БД</div>
-    //     <input ref="inputField" type="file" accept=".json"
-    //       onchange={() => {
-    //         if (this.Ref.inputField.files[0].type == "application/json") {
-    //           this.Static.formData = new FormData();
-    //           this.Static.formData.append("jsonFile", this.Ref.inputField.files[0])
 
-    //         }
-    //       }}
-    //     />
     //     <button
     //       onclick={() => {
     //         if (this.Static.formData) {

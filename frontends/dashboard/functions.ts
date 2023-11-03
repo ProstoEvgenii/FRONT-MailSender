@@ -5,8 +5,14 @@ export const getURL = function () {
   if (this.Static.sendTo != null) {
     url += `?sendTo=${this.Static.sendTo}`
   }
+  if (this.Static.SendAutoAt != null) {
+    url += `?sendAutoAt=${this.Static.SendAutoAt}`
+  }
 
-  console.log('=bd0042=',url)
+
+  console.log('=bd0042=', url)
+  this.Static.SendAutoAt = null
+  this.Static.sendTo = null
   return url
 }
 
@@ -25,7 +31,6 @@ export const updateBD = async function () {
     body: this.Static.formData
   });
   this.Static.usersAdded = await response.json()
-  console.log('=6dd074=', this.Static.usersAdded)
   this.fn("makeRequest")
   // if (!response.ok) {
   //   this.init()

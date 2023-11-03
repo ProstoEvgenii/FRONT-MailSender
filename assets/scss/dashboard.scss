@@ -36,21 +36,22 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
       font-size: 1.6rem;
       text-align: right;
     }
-    span{
+
+    span {
       padding-left: 10px;
     }
 
-    &__email{
+    &__email {
       display: flex;
       flex-direction: column;
     }
   }
 
   &_settings {
-margin-top: 25px;
-display: flex;
-// justify-content: space-between;
-gap: 30px;
+    margin-top: 25px;
+    display: flex;
+    // justify-content: space-between;
+    gap: 30px;
 
 
     &__component {
@@ -65,6 +66,7 @@ gap: 30px;
       gap: 20px;
       // justify-content: center;
       align-items: center;
+
       p {
         font-size: 1.3rem;
         width: 100%;
@@ -73,9 +75,28 @@ gap: 30px;
       }
     }
 
+    .users_upload {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1vw;
+
+      
+    }
+    .upload_response {
+      display: flex;
+      justify-content: center;
+    }
+
     .toggle_row {
       display: flex;
       align-items: center;
+      .minutes{
+        font-size: 1.2rem;
+        font-family: inherit;
+      color: var(--greyDark);
+      text-align: left;
+      }
       p {
         font-size: 0.9rem;
         font-weight: 500;
@@ -151,12 +172,13 @@ gap: 30px;
       height: 3rem;
       border: none;
       border-radius: 1rem;
-      font-size: 1rem;
+      font-size: 1.2rem;
       padding-left: 0.7rem;
       box-shadow: $inner-shadow;
       background: none;
       font-family: inherit;
       color: var(--greyDark);
+      text-align: center;
 
       &::placeholder {
         color: var(--greyLight-3);
@@ -198,7 +220,8 @@ gap: 30px;
     padding-top: 1.5vw;
     gap: 1.5vw;
   }
-  &_send__response{
+
+  &_send__response {
     display: flex;
     justify-content: center;
     padding-top: 15px;
