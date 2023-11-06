@@ -24,7 +24,6 @@ export const makeRequest = async function () {
   this.init()
 
 }
-
 export const updateBD = async function () {
   const response = await fetch("/api/Dashboard", {
     method: "POST",
