@@ -65,7 +65,9 @@ export default function () {
           onclick={() => {
 
           }}
-        >Найти</button>
+        >
+          Найти
+        </button>
       </div>
       <br />
       <div class='test-container'>
@@ -93,6 +95,7 @@ export default function () {
                   element.class = 'pagination-number '
                 });
                 this.Static.currentPage -= 1
+                this.fn('pagination');
                 this.fn("makeRequest")
                 this.init()
               }
@@ -100,7 +103,6 @@ export default function () {
           >
             &lt;
           </button>
-
           <div id="pagination-numbers" ref='paginationNumbers'>
             <span class='hidden' ref='first_two' >
               {
@@ -113,7 +115,7 @@ export default function () {
                           element.class = 'pagination-number '
                         });
                         this.Static.currentPage = item.number
-                        this.fn('pagination', this.Static.currentPage);
+                        this.fn('pagination');
                         item.class += "active"
                         if (this.Static.currentPage < 3) {
                           this.Ref.first_two.classList.add('hidden')
@@ -126,10 +128,7 @@ export default function () {
                       {item.number}</button>
                   )
                 })
-
               }
-
-
               <span class='dots' ref='first_two_dots'>...</span>
             </span>
             {
@@ -137,8 +136,6 @@ export default function () {
                 return (
                   <button class={item.class} ref="pagination_number"
                     onclick={(e) => {
-                      console.log('=530dd4=', "центр")
-
                       this.Static.Pages.forEach(element => {
                         element.class = 'pagination-number '
                       });
@@ -150,7 +147,6 @@ export default function () {
                   >
                     {item.number}
                   </button>
-
                 )
               })
             }
@@ -177,12 +173,10 @@ export default function () {
                       }}
                     >
                       {item.number}</button>
-
                   )
                 })
               }
             </span>
-
           </div>
           <button class={["pagination-button", this.Static.test == 2 ? "test" : "ffhff"]} id="next-button"
             aria-label="Next page"
@@ -194,6 +188,7 @@ export default function () {
                 });
                 this.Static.currentPage += 1
                 this.fn("makeRequest")
+                this.fn('pagination');
                 this.init()
               }
             }}
