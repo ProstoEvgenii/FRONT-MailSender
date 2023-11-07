@@ -15,7 +15,7 @@ export const progress = async function ({ load, total }) {
     if (percent && prog) {
         if (count == 100) {
             percent.classList.add("text_blink");
-            percent.textContent = 'Connected to Blockchain!';
+            percent.textContent = 'Done!';
             setTimeout(() => {
                 if (preloader) {
                     preloader.style.display = "none"
@@ -24,7 +24,7 @@ export const progress = async function ({ load, total }) {
         } else {
             prog.style.width = 200 / 100 * count + 'px';
             if (count > 80) {
-                percent.textContent = 'Connected to Blockchain!';
+                percent.textContent = 'Done!';
             } else {
                 percent.textContent = count + '%';
 

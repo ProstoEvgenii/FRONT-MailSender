@@ -3,7 +3,7 @@ import Navigation from "./navigation"
 
 export const display = function () {
   return (
-    <main class="history section">
+    <main class="">
       <div class="wrapper">
         <Navigation />
       </div>
