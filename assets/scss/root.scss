@@ -21,6 +21,12 @@ body {
 
 }
 
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 html {
     scrollbar-color: $akebi_purple transparent;
     scrollbar-width: thin;
@@ -53,10 +59,14 @@ body {
         background-color: transparent;
     }
 }
-main{
+
+main {
     margin-top: 90px;
-    height: 100%;
-    // flex-grow: 1;
+    flex-grow: 1;
+}
+
+footer {
+    flex-grow: 0;
 }
 
 p {
