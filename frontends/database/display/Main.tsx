@@ -5,9 +5,14 @@ import magn from '@svg/ann/seach_magnifier.svg'
 
 const RenderTable = function ({ items }) {
 
-  if (!items || !items.lenght) {
-    <tbody class="history_table-body">
-    </tbody>
+  if (!items) {
+    return (
+      <tbody class="history_table-body">
+        <tr>
+          <td>Пользовател не найдены.</td>
+        </tr>
+      </tbody>
+    )
   }
 
   return (
@@ -96,7 +101,7 @@ export default function () {
                 });
                 this.Static.currentPage -= 1
                 this.fn('pagination');
-                this.fn("makeRequest")
+                
                 this.init()
               }
             }}
@@ -140,7 +145,7 @@ export default function () {
                         element.class = 'pagination-number '
                       });
                       this.Static.currentPage = item.number
-                      this.fn('pagination', this.Static.currentPage);
+                      this.fn('pagination');
                       item.class += "active"
                       this.init()
                     }}
@@ -160,10 +165,11 @@ export default function () {
                         this.Static.Pages.forEach(element => {
                           element.class = 'pagination-number '
                         });
+                        console.log('=d3212c=', "two_last")
                         this.Static.currentPage = item.number
-                        this.fn('pagination', this.Static.currentPage);
+                        this.fn('pagination');
                         item.class += "active"
-                        if (this.Static.currentPage >= this.Static.lastPage - 3) {
+                        if (this.Static.currentPage >= this.Static.lastPage - 3) { 
                           this.Ref.two_last.classList.add('hidden')
                           this.Ref.first_two.classList.remove('hidden')
                           this.Static.Begin = this.Static.Pages.at(-6).number
@@ -178,7 +184,7 @@ export default function () {
               }
             </span>
           </div>
-          <button class={["pagination-button", this.Static.test == 2 ? "test" : "ffhff"]} id="next-button"
+          <button class="pagination-button"  id="next-button"
             aria-label="Next page"
             title="Next page"
             onclick={() => {
@@ -187,8 +193,8 @@ export default function () {
                   element.class = 'pagination-number '
                 });
                 this.Static.currentPage += 1
-                this.fn("makeRequest")
-                this.fn('pagination');
+                // this.fn("makeRequest")
+                this.fn('pagination')
                 this.init()
               }
             }}
