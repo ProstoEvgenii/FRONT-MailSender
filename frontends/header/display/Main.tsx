@@ -48,7 +48,11 @@ export default function () {
           ><a href="/settings" onclick={this.Fn.link}>Настройки</a></li> */}
         </ul>
 
-        <div class="header_logo">
+        <div class="header_logo"
+          onclick={() => {
+            this.Variable.userAuth = true
+            this.Fn.linkChange("/")
+          }}>
           <img src={exit} alt="Выход из профиля" />
         </div>
       </nav>

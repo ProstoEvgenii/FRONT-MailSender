@@ -23,7 +23,7 @@ export const makeRequest = async function () {
     return
   }
 
-  this.Static.pageCount = Math.ceil(this.Static.response.usersCount / 20)
+  this.Static.pageCount = Math.ceil(this.Static.response.usersCount / 15)
   this.Static.Pages = []
   for (let i = 1; i <= this.Static.pageCount; i++) {
     this.Static.Pages.push({ number: i, class: 'pagination-number ' })

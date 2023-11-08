@@ -11,14 +11,22 @@ export default function () {
         <div class="home_form">
           <h2 class="title_general">Авторизация</h2>
           <div class="input_field">
-            <input type="email" placeholder="Введите email:" class="input_field__input" />
+            <input type="email" placeholder={this.Static.form.login.placeholder} class="input_field__input"
+              oninput={(e: any) => {
+                this.Static.form.login.value = e.target.value;
+              }}
+            />
             <div class="input_field__icon">
               <img src={email} alt="Электронная почта" />
             </div>
           </div>
-
+          {/* <input type="che" checked/> */}
           <div class="input_field">
-            <input type="password" placeholder="Введите пароль:" class="input_field__input" />
+            <input type="password" placeholder={this.Static.form.password.placeholder} class="input_field__input"
+              oninput={(e: any) => {
+                this.Static.form.password.value = e.target.value;
+              }}
+            />
             <div class="input_field__icon">
               <img src={lock} alt="Пароль" />
             </div>
@@ -27,7 +35,29 @@ export default function () {
             </div>
           </div>
 
-          <button class="btn btn__passive">Войти</button>
+          <button class="btn btn__passive"
+            onclick={async () => {
+
+              let data = {
+                login: this.Static.form.login.value,
+                password: this.Static.form.password.value,
+                uuid: localStorage.uuid
+              }
+              let answer = await this.Services.functions.sendApi("/api/UserAuth", data)
+              console.log('=74d989=', answer)
+              if (answer.error) {
+                alert(answer.error)
+                return
+              }
+
+              this.Variable.userAuth = true
+              this.Fn.linkChange("/dashboard")
+
+
+
+
+            }}
+          >Войти</button>
         </div>
       </div>
       {/* <div class="home_email">
