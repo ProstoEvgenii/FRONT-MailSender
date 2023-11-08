@@ -1,11 +1,13 @@
 export const getURL = function () {
-    let url = "/api/Settings"
-    // if (this.Static.params.sendAll) {
-    //     url += "?sendAll=true"
+    let url = `/api/Settings?uuid=${localStorage.uuid}`
+
+    // if (localStorage.uuid) {
+    //     url += `?uuid=${localStorage.uuid}`
     // }
 
-    // this.Static.params.sendAll = false
+
     this.Static.record = []
+    console.log('=91f0aa=', url)
     return url
 }
 

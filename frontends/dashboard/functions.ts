@@ -1,18 +1,21 @@
 export const getURL = function () {
-  let url = "/api/Dashboard"
+  let url = `api/Dashboard?uuid=${localStorage.uuid}`
+
+
 
 
   if (this.Static.sendTo != null) {
-    url += `?sendTo=${this.Static.sendTo}`
+    url += `&sendTo=${this.Static.sendTo}`
   }
   if (this.Static.SendAutoAt != null) {
-    url += `?sendAutoAt=${this.Static.SendAutoAt}`
+    url += `&sendAutoAt=${this.Static.SendAutoAt}`
   }
 
 
-  console.log('=bd0042=', url)
+  // console.log('=bd0042=', url)
   this.Static.SendAutoAt = null
   this.Static.sendTo = null
+  console.log('=d509be=', url)
   return url
 }
 

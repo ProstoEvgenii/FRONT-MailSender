@@ -21,7 +21,7 @@ const RenderTable = function ({ items }) {
         items.map((item, index) => {
           return (
             <tr>
-              <td class="history_table__cell">{index + 1}</td>
+              <td class="history_table__cell">{(index + 1 + (this.Static.currentPage - 1) * this.Static.limitPerPage)}</td>
               <td class="history_table__cell">{item.LastName}</td>
               <td class="history_table__cell">{item.FirstName}</td>
               <td class="history_table__cell">{item.MiddleName}</td>
@@ -101,7 +101,7 @@ export default function () {
                 });
                 this.Static.currentPage -= 1
                 this.fn('pagination');
-                
+
                 this.init()
               }
             }}
@@ -169,7 +169,7 @@ export default function () {
                         this.Static.currentPage = item.number
                         this.fn('pagination');
                         item.class += "active"
-                        if (this.Static.currentPage >= this.Static.lastPage - 3) { 
+                        if (this.Static.currentPage >= this.Static.lastPage - 3) {
                           this.Ref.two_last.classList.add('hidden')
                           this.Ref.first_two.classList.remove('hidden')
                           this.Static.Begin = this.Static.Pages.at(-6).number
@@ -184,7 +184,7 @@ export default function () {
               }
             </span>
           </div>
-          <button class="pagination-button"  id="next-button"
+          <button class="pagination-button" id="next-button"
             aria-label="Next page"
             title="Next page"
             onclick={() => {
