@@ -15,7 +15,7 @@ export const getURL = function () {
   // console.log('=bd0042=', url)
   this.Static.SendAutoAt = null
   this.Static.sendTo = null
-  console.log('=d509be=', url)
+  // console.log('=d509be=', url)
   return url
 }
 

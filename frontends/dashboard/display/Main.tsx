@@ -61,7 +61,6 @@ export default function () {
               type="text"
               oninput={(e) => {
                 this.Static.SendAutoAt = e.target.value
-                // console.log('=dac098=',this.Static.SendAutoAt)
               }}
             />
             <p class="minutes">:00</p>
@@ -69,8 +68,6 @@ export default function () {
               class="btn btn__primary"
               onclick={() => {
                 if (this.Ref.inputTime.value != "") {
-                  // console.log('=7eb08c=', this.Ref.inputEmail.value)
-                  // this.Static.sendTo = this.Ref.inputEmail.value
                   this.fn("makeRequest")
                 }
               }}

@@ -17,11 +17,8 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     align-items: center;
     justify-content: center;
     min-height: 100%;
-    // margin-top: 100px;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // gap: 20px;
+    flex-direction: column;
+    gap: 20px;
 
     .settings__fields__container {
         box-shadow: .8rem .8rem 1.4rem var(--greyLight-2),
@@ -253,9 +250,30 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
         }
 
+    }
+    table{
+        .field__input {
+            width: 10rem;
+            height: 3rem;
+            border: none;
+            border-radius: 1rem;
+            font-size: 1rem;
+            // padding-left: 1.4rem;
+            text-align: center;
+            box-shadow: $inner-shadow;
+            background: none;
+            font-family: inherit;
+            color: var(--greyDark);
 
+            &::placeholder {
+                color: var(--greyLight-3);
+            }
 
-
+            &:focus {
+                outline: none;
+                box-shadow: $shadow;
+            }
+        }
     }
 
 

@@ -1,13 +1,10 @@
 export const getURL = function () {
   let url = `/api/Database?uuid=${localStorage.uuid}`
 
-  // if(localStorage.uuid){
-  //   url += ?uuid=${localStorage.uuid}`
-  // }
   if (this.Static.currentPage != 0) {
     url += `&page=${this.Static.currentPage}`
   }
-  console.log('=5494ff=', url)
+  // console.log('=5494ff=', url)
   return url
 }
 

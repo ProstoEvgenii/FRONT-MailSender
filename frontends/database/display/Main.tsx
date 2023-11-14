@@ -14,7 +14,6 @@ const RenderTable = function ({ items }) {
       </tbody>
     )
   }
-
   return (
     <tbody class="history_table-body">
       {
@@ -32,9 +31,7 @@ const RenderTable = function ({ items }) {
         })
       }
     </tbody>
-
   )
-
 }
 
 export default function () {

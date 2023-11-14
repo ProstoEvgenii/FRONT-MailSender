@@ -2,12 +2,9 @@ export const getURL = function () {
 
   let url = `/api/History?uuid=${localStorage.uuid}`
 
-  // if(localStorage.uuid){
-  //   url += `?uuid=${localStorage.uuid}`
-  // }
 
   this.Static.record = []
-  console.log('=abb828=',url)
+  // console.log('=abb828=',url)
   return url
 }
 
