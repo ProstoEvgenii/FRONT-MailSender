@@ -1,5 +1,4 @@
 export const loader = function () {
-    // this.fn("printHello")
     this.fn("makeRequest")
     this.Static.settingsForm = {
         template: "",
@@ -8,6 +7,7 @@ export const loader = function () {
         smtp: "",
         port: 0
     }
+    this.Static.add = false
     this.Static.eventForm = {
         name: "",
         templateName: "",

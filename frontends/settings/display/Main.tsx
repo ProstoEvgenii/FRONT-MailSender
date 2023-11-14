@@ -131,16 +131,7 @@ export default function () {
           </div>
         </div>
       </div>
-      <button
-        class="butn btn__primary "
-        onclick={() => {
 
-          this.Ref.newEvent.classList.remove("hidden")
-
-        }}
-      >
-        Добавить
-      </button>
       <table class="history_table">
         <thead >
           <tr class="history_table-head">
@@ -238,20 +229,43 @@ export default function () {
               <button
                 class="butn btn__primary "
                 onclick={() => {
-
-                  this.Ref.newEvent.classList.add("hidden")
-                  this.fn("validateFormEvent")
-                  console.log('=1832df=', this.Static.eventForm)
+                  if (this.Static.add) {
+                    this.Ref.newEvent.classList.add("hidden")
+                    this.fn("validateFormEvent")
+                    this.Static.add = false
+                  }
                 }}
               >
                 Сохранить
+              </button>
+              <button
+                class="butn btn__cancel "
+                onclick={() => {
+                  if (this.Static.add) {
+                    this.Ref.newEvent.classList.add("hidden")
+                    this.fn("validateFormEvent")
+                    this.Static.add = false
+                  }
+                }}
+              >
+                Отменить
               </button>
             </td>
           </tr>
         </thead>
         <RenderTable items={this.Static.data ? this.Static.data.records : []} />
       </table>
+      <button
+        class="butn btn__primary "
+        onclick={() => {
+          this.Static.add = true
+          this.Ref.newEvent.classList.remove("hidden")
 
+        }}
+      >
+        Добавить событие
+      </button>
+      <br />
 
     </div>
 
