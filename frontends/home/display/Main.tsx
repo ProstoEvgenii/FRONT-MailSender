@@ -1,4 +1,4 @@
-import { Cemjsx } from "cemjs-all"
+import { Cemjsx, Static, Fn, front } from "cemjs-all"
 import lock from '@svg/ann/lock.svg'
 import email from '@svg/ann/email.svg'
 import eye from '@svg/ann/eye.svg'
@@ -11,9 +11,9 @@ export default function () {
         <div class="home_form">
           <h2 class="title_general">Авторизация</h2>
           <div class="input_field">
-            <input type="email" placeholder={this.Static.form.login.placeholder} class="input_field__input"
+            <input type="email" placeholder={Static.form.login.placeholder} class="input_field__input"
               oninput={(e: any) => {
-                this.Static.form.login.value = e.target.value;
+                Static.form.login.value = e.target.value;
               }}
             />
             <div class="input_field__icon">
@@ -22,9 +22,9 @@ export default function () {
           </div>
           {/* <input type="che" checked/> */}
           <div class="input_field">
-            <input type="password" placeholder={this.Static.form.password.placeholder} class="input_field__input"
+            <input type="password" placeholder={Static.form.password.placeholder} class="input_field__input"
               oninput={(e: any) => {
-                this.Static.form.password.value = e.target.value;
+                Static.form.password.value = e.target.value;
               }}
             />
             <div class="input_field__icon">
@@ -37,25 +37,20 @@ export default function () {
 
           <button class="btn btn__passive"
             onclick={async () => {
-
               let data = {
-                login: this.Static.form.login.value,
-                password: this.Static.form.password.value,
+                login: Static.form.login.value,
+                password: Static.form.password.value,
                 uuid: localStorage.uuid
               }
-              let answer = await this.Services.functions.sendApi("/api/UserAuth", data)
-              console.log('=74d989=', answer)
+              let answer = await front.Services.functions.sendApi("/api/UserAuth", data)
               if (answer.error) {
                 alert(answer.error)
                 return
               }
 
-              this.Variable.userAuth = true
-              this.Fn.linkChange("/dashboard")
-
-
-
-
+              front.Variable.userAuth = true
+              Fn.linkChange("/dashboard")
+              return
             }}
           >Войти</button>
         </div>

@@ -1,0 +1,68 @@
+import { Cemjsx, front, Func, Static, Fn } from "cemjs-all"
+import Navigation from "./navigation"
+
+
+front.listener.finish = () => {
+    return
+}
+
+front.func.getURL = function () {
+    let url = `api/Dashboard?uuid=${localStorage.uuid}`
+    if (Static.sendTo != null) {
+        url += `&sendTo=${Static.sendTo}`
+    }
+    if (Static.SendAutoAt != null) {
+        url += `&sendAutoAt=${Static.SendAutoAt}`
+    }
+
+    Static.SendAutoAt = null
+    Static.sendTo = null
+    return url
+}
+
+front.func.updateBD = async function () {
+    const response = await fetch("/api/Dashboard", {
+        method: "POST",
+        body: this.Static.formData
+    });
+    Static.usersAdded = await response.json()
+    Func.makeRequest()
+    // if (!response.ok) {
+    //   this.init()
+    //   throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
+    // }
+    Fn.init()
+}
+
+front.func.makeRequest = async function () {
+    let url = Func.getURL()
+    const response = await fetch(url);
+    Static.record = await response.json()
+    Fn.init()
+}
+
+front.loader = () => {
+    Static.record = []
+    Static.usersAdded = []
+
+    // if (!this.Static.usersAdded.documentsInserted){
+    //     console.log('=71b308=',this.Static.usersAdded.documentsInserted)
+    // }
+
+    Static.SendAutoAt = null
+    Static.sendTo = null
+    Func.makeRequest()
+    return
+}
+
+front.display = () => {
+    return (
+        <main class="">
+            <div class="wrapper">
+                <Navigation />
+            </div>
+        </main>
+    )
+}
+
+export { front }

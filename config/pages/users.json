@@ -1,8 +1,0 @@
-{
-    "url": "/users",
-    "front": [
-        "header",
-        "users",
-        ""
-    ]
-}

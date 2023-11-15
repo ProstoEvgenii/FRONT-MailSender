@@ -1,4 +1,4 @@
-import { Cemjsx } from "cemjs-all"
+import { Cemjsx, Fn } from "cemjs-all"
 
 export default function () {
     return (
@@ -8,7 +8,7 @@ export default function () {
             <p class="error_subtitle">Вернитесь на главную страницу</p>
             <a
                 href="/"
-                onclick={this.Fn.link}
+                onclick={Fn.link}
                 class="btn btn_timing"
             >
                 <span>На главную</span>

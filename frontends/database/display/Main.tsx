@@ -1,4 +1,4 @@
-import { Cemjsx } from "cemjs-all"
+import { Cemjsx, Static, front, Fn, Func, Ref } from "cemjs-all"
 import users from '@json/users'
 import magn from '@svg/ann/seach_magnifier.svg'
 
@@ -20,7 +20,7 @@ const RenderTable = function ({ items }) {
         items.map((item, index) => {
           return (
             <tr>
-              <td class="history_table__cell">{(index + 1 + (this.Static.currentPage - 1) * this.Static.limitPerPage)}</td>
+              <td class="history_table__cell">{(index + 1 + (Static.currentPage - 1) * Static.limitPerPage)}</td>
               <td class="history_table__cell">{item.LastName}</td>
               <td class="history_table__cell">{item.FirstName}</td>
               <td class="history_table__cell">{item.MiddleName}</td>
@@ -84,7 +84,7 @@ export default function () {
               <th class="history_table__cell">Email</th>
             </tr>
           </thead>
-          <RenderTable items={this.Static.records} />
+          <RenderTable items={Static.records} />
         </table>
         <nav class="pagination-container">
           <button
@@ -92,14 +92,13 @@ export default function () {
             aria-label="Previous page"
             title="Previous page"
             onclick={() => {
-              if (this.Static.currentPage > 1) {
-                this.Static.Pages.forEach(element => {
+              if (Static.currentPage > 1) {
+                Static.Pages.forEach(element => {
                   element.class = 'pagination-number '
                 });
-                this.Static.currentPage -= 1
-                this.fn('pagination');
-
-                this.init()
+                Static.currentPage -= 1
+                Func.pagination()
+                Fn.init()
               }
             }}
           >
@@ -108,23 +107,24 @@ export default function () {
           <div id="pagination-numbers" ref='paginationNumbers'>
             <span class='hidden' ref='first_two' >
               {
-                this.Static.Pages?.slice(0, this.Static.outertDigitsNumber).map((item, index) => {
+                Static.Pages?.slice(0, Static.outertDigitsNumber).map((item, index) => {
                   return (
                     <button class={item.class}
                       onclick={(e) => {
                         console.log('=1b0f05=', "first_two")
-                        this.Static.Pages.forEach(element => {
+                        Static.Pages.forEach(element => {
                           element.class = 'pagination-number '
                         });
-                        this.Static.currentPage = item.number
-                        this.fn('pagination');
+                        Static.currentPage = item.number
+                        Func.pagination()
+
                         item.class += "active"
-                        if (this.Static.currentPage < 3) {
-                          this.Ref.first_two.classList.add('hidden')
-                          this.Static.Begin = 0
-                          this.Static.End = 5
+                        if (Static.currentPage < 3) {
+                          Ref.first_two.classList.add('hidden')
+                          Static.Begin = 0
+                          Static.End = 5
                         }
-                        this.init()
+                        Fn.init()
                       }}
                     >
                       {item.number}</button>
@@ -134,17 +134,17 @@ export default function () {
               <span class='dots' ref='first_two_dots'>...</span>
             </span>
             {
-              this.Static.Pages?.slice(this.Static.Begin, this.Static.End).map((item, index) => {
+              Static.Pages?.slice(Static.Begin, Static.End).map((item, index) => {
                 return (
                   <button class={item.class} ref="pagination_number"
                     onclick={(e) => {
-                      this.Static.Pages.forEach(element => {
+                      Static.Pages.forEach(element => {
                         element.class = 'pagination-number '
                       });
-                      this.Static.currentPage = item.number
-                      this.fn('pagination');
+                      Static.currentPage = item.number
+                      Func.pagination()
                       item.class += "active"
-                      this.init()
+                      Fn.init()
                     }}
                   >
                     {item.number}
@@ -152,27 +152,27 @@ export default function () {
                 )
               })
             }
-            <span class={["", this.Static.pageCount >= 5 ? "" : "hidden"]} ref='two_last'>
+            <span class={["", Static.pageCount >= 5 ? "" : "hidden"]} ref='two_last'>
               <span class='dots'>...</span>
               {
-                this.Static.Pages?.slice(-this.Static.outertDigitsNumber).map((item, index) => {
+                Static.Pages?.slice(-Static.outertDigitsNumber).map((item, index) => {
                   return (
                     <button class={item.class}
                       onclick={(e) => {
-                        this.Static.Pages.forEach(element => {
+                        Static.Pages.forEach(element => {
                           element.class = 'pagination-number '
                         });
                         console.log('=d3212c=', "two_last")
-                        this.Static.currentPage = item.number
-                        this.fn('pagination');
+                        Static.currentPage = item.number
+                        Func.pagination()
                         item.class += "active"
-                        if (this.Static.currentPage >= this.Static.lastPage - 3) {
-                          this.Ref.two_last.classList.add('hidden')
-                          this.Ref.first_two.classList.remove('hidden')
-                          this.Static.Begin = this.Static.Pages.at(-6).number
-                          this.Static.End = this.Static.lastPage
+                        if (Static.currentPage >= Static.lastPage - 3) {
+                          Ref.two_last.classList.add('hidden')
+                          Ref.first_two.classList.remove('hidden')
+                          Static.Begin = Static.Pages.at(-6).number
+                          Static.End = Static.lastPage
                         }
-                        this.init()
+                        Fn.init()
                       }}
                     >
                       {item.number}</button>
@@ -185,14 +185,14 @@ export default function () {
             aria-label="Next page"
             title="Next page"
             onclick={() => {
-              if (this.Static.currentPage < this.Static.lastPage) {
-                this.Static.Pages.forEach(element => {
+              if (Static.currentPage < Static.lastPage) {
+                Static.Pages.forEach(element => {
                   element.class = 'pagination-number '
                 });
-                this.Static.currentPage += 1
+                Static.currentPage += 1
                 // this.fn("makeRequest")
-                this.fn('pagination')
-                this.init()
+                Func.pagination()
+                Fn.init()
               }
             }}
           >

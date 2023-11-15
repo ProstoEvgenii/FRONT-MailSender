@@ -1,4 +1,4 @@
-import { Cemjsx } from "cemjs-all"
+import { Cemjsx, Fn, front } from "cemjs-all"
 import logo from '@svg/ann/logo.svg'
 import exit from '@svg/ann/exit.svg'
 import menu from '@json/menu'
@@ -8,7 +8,7 @@ export default function () {
   return (
     <div class="header_inner">
       <div class="header_logo">
-        <a href="/" onclick={this.Fn.link}>
+        <a href="/dashboard" onclick={Fn.link}>
           <img
             class="header_logo-img"
             src={logo}
@@ -21,13 +21,13 @@ export default function () {
             menu.map(item => {
               return (
                 <li
-                  class={["header_menu_item", this.Variable.activeMenu == item.name ? "header_menu_item-active" : null]}
+                  class={["header_menu_item", front.Variable.activeMenu == item.name ? "header_menu_item-active" : null]}
                   onclick={() => {
-                    this.Variable.activeMenu = item.name;
-                    this.Fn.initAll();
+                    front.Variable.activeMenu = item.name;
+                    Fn.initAll();
                   }}
                 >
-                  <a href={item.link} onclick={this.Fn.link}>{item.name}</a>
+                  <a href={item.link} onclick={Fn.link}>{item.name}</a>
                 </li>
               )
             })
@@ -50,8 +50,8 @@ export default function () {
 
         <div class="header_logo"
           onclick={() => {
-            this.Variable.userAuth = true
-            this.Fn.linkChange("/")
+            front.Variable.userAuth = false
+            Fn.linkChange("/")
           }}>
           <img src={exit} alt="Выход из профиля" />
         </div>

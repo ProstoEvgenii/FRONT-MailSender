@@ -1,7 +1,17 @@
-export const loader = function () {
-    this.Static.text = "Framework CemJS!!!";
+import { Cemjsx, front, Static } from "cemjs-all"
+import Navigation from "./navigation"
 
-    this.Static.form = {
+
+front.listener.finish = () => {
+    return
+}
+
+front.func.test = () => {
+    return
+}
+
+front.loader = () => {
+    Static.form = {
         login: {
             value: "",
             valid: false,
@@ -20,7 +30,13 @@ export const loader = function () {
         },
         isValid: false,
     }
-
-
     return
 }
+
+front.display = () => {
+    return (
+        <Navigation />
+    )
+}
+
+export { front }

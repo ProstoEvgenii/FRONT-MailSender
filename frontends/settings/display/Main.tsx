@@ -1,4 +1,4 @@
-import { Cemjsx } from "cemjs-all"
+import { Cemjsx, Static, Fn, Func, Ref } from "cemjs-all"
 
 
 const RenderTable = function ({ items }) {
@@ -61,13 +61,13 @@ export default function () {
                     /> */}
 
           <input
-            value={this.Static.data ? this.Static.settingsForm.emailLogin = this.Static.data.emailLogin : ""}
+            value={Static.data ? Static.settingsForm.emailLogin = Static.data.emailLogin : ""}
             placeholder="E-mail"
             ref="inputEmail"
             class="field__input"
             type="text"
             oninput={(e) => {
-              this.Static.settingsForm.emailLogin = e.target.value
+              Static.settingsForm.emailLogin = e.target.value
             }}
           />
 
@@ -77,36 +77,36 @@ export default function () {
             class="field__input"
             type="text"
             oninput={(e) => {
-              this.Static.settingsForm.emailPass = e.target.value
+              Static.settingsForm.emailPass = e.target.value
             }}
           />
 
           <input
             placeholder="smtp"
-            value={this.Static.data ? this.Static.settingsForm.smtp = this.Static.data.smtp : ""}
+            value={Static.data ? Static.settingsForm.smtp = Static.data.smtp : ""}
             ref="inputSmtp"
             class="field__input"
             type="text"
             oninput={(e) => {
-              this.Static.settingsForm.smtp = e.target.value
+              Static.settingsForm.smtp = e.target.value
             }}
           />
 
           <input
             placeholder="Порт"
-            value={this.Static.data ? this.Static.settingsForm.port = this.Static.data.port : ""}
+            value={Static.data ? Static.settingsForm.port = Static.data.port : ""}
             ref="inputPort"
             class="field__input"
             type="text"
             oninput={(e) => {
-              this.Static.settingsForm.port = e.target.value
+              Static.settingsForm.port = e.target.value
             }}
           />
 
           <button
             class="butn btn__primary"
             onclick={() => {
-              this.fn("validateForm")
+              Func.validateForm()
             }}
           >
             Сохранить настройки
@@ -115,7 +115,7 @@ export default function () {
 
           <div>
             {
-              this.Static.postResponse.documentsInserted == 0 ? <div></div> :
+              Static.postResponse.documentsInserted == 0 ? <div></div> :
                 <div>
                   Настройки cохранены
                 </div>
@@ -123,7 +123,7 @@ export default function () {
           </div>
           <div>
             {
-              this.Static.postResponse.documentsModified == 0 ? <div></div> :
+              Static.postResponse.documentsModified == 0 ? <div></div> :
                 <div>
                   Настройки обновлены
                 </div>
@@ -154,7 +154,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.name = e.target.value
+                  Static.eventForm.name = e.target.value
                 }}
               />
             </td>
@@ -165,7 +165,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.from = e.target.value
+                  Static.eventForm.from = e.target.value
                 }}
               />
             </td>
@@ -176,7 +176,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.subject = e.target.value
+                  Static.eventForm.subject = e.target.value
                 }}
               />
             </td>
@@ -187,7 +187,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.templateName = e.target.value
+                  Static.eventForm.templateName = e.target.value
                   console.log('=b300e5=', e.target.value)
                 }}
               />
@@ -199,7 +199,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.sendAt = parseInt(e.target.value)
+                  Static.eventForm.sendAt = parseInt(e.target.value)
                 }}
               />
             </td>
@@ -211,7 +211,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.day = parseInt(e.target.value)
+                  Static.eventForm.day = parseInt(e.target.value)
                 }}
               />
               Месяц:
@@ -221,7 +221,7 @@ export default function () {
                 class="field__input "
                 type="text"
                 oninput={(e) => {
-                  this.Static.eventForm.month = parseInt(e.target.value)
+                  Static.eventForm.month = parseInt(e.target.value)
                 }}
               />
             </td>
@@ -229,10 +229,10 @@ export default function () {
               <button
                 class="butn btn__primary "
                 onclick={() => {
-                  if (this.Static.add) {
-                    this.Ref.newEvent.classList.add("hidden")
-                    this.fn("validateFormEvent")
-                    this.Static.add = false
+                  if (Static.add) {
+                    Ref.newEvent.classList.add("hidden")
+                    Func.validateFormEvent()
+                    Static.add = false
                   }
                 }}
               >
@@ -241,10 +241,10 @@ export default function () {
               <button
                 class="butn btn__cancel "
                 onclick={() => {
-                  if (this.Static.add) {
-                    this.Ref.newEvent.classList.add("hidden")
-                    this.fn("validateFormEvent")
-                    this.Static.add = false
+                  if (Static.add) {
+                    Ref.newEvent.classList.add("hidden")
+                    Func.validateFormEvent()
+                    Static.add = false
                   }
                 }}
               >
@@ -253,13 +253,13 @@ export default function () {
             </td>
           </tr>
         </thead>
-        <RenderTable items={this.Static.data ? this.Static.data.records : []} />
+        <RenderTable items={Static.data ? Static.data.records : []} />
       </table>
       <button
         class="butn btn__primary "
         onclick={() => {
-          this.Static.add = true
-          this.Ref.newEvent.classList.remove("hidden")
+          Static.add = true
+          Ref.newEvent.classList.remove("hidden")
 
         }}
       >

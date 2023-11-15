@@ -1,4 +1,4 @@
-import { Cemjsx } from "cemjs-all"
+import { Cemjsx, Static, front, Fn, Func, Ref } from "cemjs-all"
 import letter from '@images/ann/letter.jpg'
 import email from '@svg/ann/email.svg'
 
@@ -8,26 +8,26 @@ export default function () {
       <div class="info_desc">
         <p>Пользователей:
           {
-            this.Static.record.usersCount == null ? <span class="bold">-</span> :
+            Static.record.usersCount == null ? <span class="bold">-</span> :
               <span class="bold">
-                {this.Static.record.usersCount}
+                {Static.record.usersCount}
               </span>
           }
         </p>
         <div class="info_desc__email">
           <p>Всего отправлено писем:
             {
-              this.Static.record.logsCount == null ? <span class="bold">-</span> :
+              Static.record.logsCount == null ? <span class="bold">-</span> :
                 <span class="bold">
-                  {this.Static.record.logsCount}
+                  {Static.record.logsCount}
                 </span>
             }
           </p>
           <p>Отправлено сегодня:
             {
-              this.Static.record.todaySent == null ? <span class="bold">-</span> :
+              Static.record.todaySent == null ? <span class="bold">-</span> :
                 <span class="bold">
-                  {this.Static.record.todaySent}
+                  {Static.record.todaySent}
                 </span>
             }
           </p>
@@ -54,21 +54,21 @@ export default function () {
             </div>
 
             <input
-              value={this.Static.record.sendAutoAt ? this.Static.SendAutoAt = this.Static.record.sendAutoAt : ""}
+              value={Static.record.sendAutoAt ? Static.SendAutoAt = Static.record.sendAutoAt : ""}
               placeholder=""
               ref="inputTime"
               class="field__input"
               type="text"
               oninput={(e) => {
-                this.Static.SendAutoAt = e.target.value
+                Static.SendAutoAt = e.target.value
               }}
             />
             <p class="minutes">:00</p>
             <button
               class="btn btn__primary"
               onclick={() => {
-                if (this.Ref.inputTime.value != "") {
-                  this.fn("makeRequest")
+                if (Ref.inputTime.value != "") {
+                  Func.makeRequest()
                 }
               }}
             >
@@ -88,9 +88,9 @@ export default function () {
                 accept=".json"
 
                 onchange={() => {
-                  if (this.Ref.UploadUsers.files[0].type == "application/json") {
-                    this.Static.formData = new FormData();
-                    this.Static.formData.append("jsonFile", this.Ref.UploadUsers.files[0]);
+                  if (Ref.UploadUsers.files[0].type == "application/json") {
+                    Static.formData = new FormData();
+                    Static.formData.append("jsonFile", Ref.UploadUsers.files[0]);
                   }
                 }}
               />
@@ -98,11 +98,10 @@ export default function () {
             <button
               class="btn btn__primary"
               onclick={() => {
-                if (this.Static.formData) {
-                  this.fn("updateBD")
-                  this.Ref.UploadUsers.value = ""
-                  this.Static.formData = null
-
+                if (Static.formData) {
+                  Func.updateBD()
+                  Ref.UploadUsers.value = ""
+                  Static.formData = null
                 }
 
               }}
@@ -113,8 +112,8 @@ export default function () {
           </div>
           <p>
             {
-              this.Static.usersAdded.documentsInserted == null ? <span></span> :
-                <span class="upload_response">Пользователей добавлено: {this.Static.usersAdded.documentsInserted}</span>
+              Static.usersAdded.documentsInserted == null ? <span></span> :
+                <span class="upload_response">Пользователей добавлено: {Static.usersAdded.documentsInserted}</span>
             }
           </p>
         </div>
@@ -138,10 +137,10 @@ export default function () {
           <button
             class="btn btn__primary"
             onclick={() => {
-              if (this.Ref.inputEmail.value != "") {
+              if (Ref.inputEmail.value != "") {
                 // console.log('=7eb08c=', this.Ref.inputEmail.value)
-                this.Static.sendTo = this.Ref.inputEmail.value
-                this.fn("makeRequest")
+                Static.sendTo = Ref.inputEmail.value
+                Func.makeRequest()
               }
             }}
           >
@@ -150,8 +149,8 @@ export default function () {
         </div>
         <div class="info_send__response">
           {
-            this.Static.record.sendEmailresult == "" ? <span></span> :
-              <span>{this.Static.record.sendEmailresult}</span>
+            Static.record.sendEmailresult == "" ? <span></span> :
+              <span>{Static.record.sendEmailresult}</span>
           }
         </div>
       </div>
