@@ -29,12 +29,14 @@ const RenderTable = function ({ items }) {
                 {item.sendAt}
               </td>
               <td class="history_table__cell">{item.isDaily ? "Ежедневно" : `${item.day}.${item.month}`}</td>
-              <td class="history_table__cell">{item.Email}</td>
-              <td><button
+              {/* <td class="history_table__cell">{item.Email}</td> */}
+              <td class="history_table__cell">
+                <button
                 onclick={() => {
                   console.log('=f5e25d=', item.name)
                 }}
-              ></button></td>
+              >
+                </button></td>
             </tr>
           )
         })
