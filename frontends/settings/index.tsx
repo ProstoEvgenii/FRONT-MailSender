@@ -8,6 +8,10 @@ front.listener.finish = () => {
 
 front.func.getURL = function () {
     let url = `/api/Settings?uuid=${localStorage.uuid}`
+    if (Static.add != false) {
+        url += `&tmplates=${Static.add}`
+    }
+
     return url
 }
 
@@ -51,6 +55,8 @@ front.func.validateFormEvent = function () {
     }
 }
 
+
+
 front.func.updateEvents = async function () {
     const response = await fetch("/api/Events", {
         method: "POST",
@@ -81,6 +87,11 @@ front.func.updateSettings = async function () {
 }
 
 front.loader = () => {
+    Static.getTempltes = false
+    Static.arr = [
+        11111,
+        22222,
+    ]
     Func.makeRequest()
     Static.settingsForm = {
         template: "",

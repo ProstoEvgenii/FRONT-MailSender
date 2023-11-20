@@ -48,7 +48,6 @@ export default function () {
                 alert(answer.error)
                 return
               }
-
               front.Variable.userAuth = true
               Fn.linkChange("/dashboard")
               return

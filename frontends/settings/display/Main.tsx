@@ -1,4 +1,4 @@
-import { Cemjsx, Static, Fn, Func, Ref } from "cemjs-all"
+import { Cemjsx, Static, Fn, Func, Ref, front } from "cemjs-all"
 
 
 const RenderTable = function ({ items }) {
@@ -32,10 +32,10 @@ const RenderTable = function ({ items }) {
               {/* <td class="history_table__cell">{item.Email}</td> */}
               <td class="history_table__cell">
                 <button
-                onclick={() => {
-                  console.log('=f5e25d=', item.name)
-                }}
-              >
+                  onclick={() => {
+                    console.log('=f5e25d=', item.name)
+                  }}
+                >
                 </button></td>
             </tr>
           )
@@ -44,6 +44,15 @@ const RenderTable = function ({ items }) {
     </tbody>
   )
 }
+
+const RenderOptions = function ({ items }) {
+
+}
+
+
+
+
+
 export default function () {
   return (
     <div class="settings info section">
@@ -183,7 +192,7 @@ export default function () {
               />
             </td>
             <td class="history_table__cell">
-              <input
+              {/* <input
                 placeholder=""
                 ref="inputTime"
                 class="field__input "
@@ -192,7 +201,12 @@ export default function () {
                   Static.eventForm.templateName = e.target.value
                   console.log('=b300e5=', e.target.value)
                 }}
-              />
+              /> */}
+              <select name="" id="">
+                <RenderOptions items={Static.data ? Static.data.records : []} />
+                <option value="">Привет</option>
+
+              </select>
             </td>
             <td class="history_table__cell">
               <input
@@ -259,10 +273,10 @@ export default function () {
       </table>
       <button
         class="butn btn__primary "
-        onclick={() => {
+        onclick={async () => {
           Static.add = true
           Ref.newEvent.classList.remove("hidden")
-
+          Func.makeRequest()
         }}
       >
         Добавить событие
