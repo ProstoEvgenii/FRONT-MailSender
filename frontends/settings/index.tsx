@@ -8,8 +8,8 @@ front.listener.finish = () => {
 
 front.func.getURL = function () {
     let url = `/api/Settings?uuid=${localStorage.uuid}`
-    if (Static.add != false) {
-        url += `&tmplates=${Static.add}`
+    if (Static.add) {
+        url += `&templates=${Static.add}`
     }
 
     return url
