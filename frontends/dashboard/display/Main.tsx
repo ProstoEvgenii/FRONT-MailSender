@@ -6,25 +6,25 @@ export default function () {
   return (
     <div class="info_inner">
       <div class="info_desc">
-      <div class="info_desc__email">
-        <p>
-          Пользователей:
-          {
-            Static.record.usersCount == null ? <span class="bold">-</span> :
-              <span class="bold">
-                {Static.record.usersCount}
-              </span>
-          }
-        </p>
-        <p>
-          Дней рождений сегодня:
-          {
-            Static.record.countBirtdays == null ? <span class="bold">-</span> :
-              <span class="bold">
-                {Static.record.countBirtdays}
-              </span>
-          }
-        </p>
+        <div class="info_desc__email">
+          <p>
+            Пользователей:
+            {
+              Static.record.usersCount == null ? <span class="bold">-</span> :
+                <span class="bold">
+                  {Static.record.usersCount}
+                </span>
+            }
+          </p>
+          <p>
+            Дней рождений сегодня:
+            {
+              Static.record.countBirtdays == null ? <span class="bold">-</span> :
+                <span class="bold">
+                  {Static.record.countBirtdays}
+                </span>
+            }
+          </p>
         </div>
         <div class="info_desc__email">
           <p>Всего отправлено писем:
@@ -49,6 +49,9 @@ export default function () {
         <div class="info_settings__component">
           <p>Загрузка шаблона</p>
           <div class="users_upload">
+            <input
+              ref="UploadTemplateName"
+              type="text" />
             <div>
               <input
                 type="file"
@@ -56,9 +59,12 @@ export default function () {
                 accept=".html"
 
                 onchange={() => {
-                  if (Ref.UploadUsers.files[0].type == "application/json") {
-                    Static.formData = new FormData();
-                    Static.formData.append("jsonFile", Ref.UploadUsers.files[0]);
+
+                  if (Ref.UploadTemplate.files[0].type == "text/html") {
+                    Static.formTemplateUpload = new FormData();
+                    Static.formTemplateUpload.append("jsonFileTemplate", Ref.UploadTemplate.files[0])
+
+
                   }
                 }}
               />
@@ -66,10 +72,12 @@ export default function () {
             <button
               class="btn btn__primary"
               onclick={() => {
-                if (Static.formData) {
-                  Func.updateBD()
-                  Ref.UploadUsers.value = ""
-                  Static.formData = null
+                // console.log('=698dbd=', Ref.UploadTemplateName.value)
+                if (Static.formTemplateUpload && Ref.UploadTemplateName.value) {
+                  Static.formTemplateUpload.append("name", Ref.UploadTemplateName.value)
+                  Func.updateTemplate("Templates", Static.formTemplateUpload)
+                  Ref.UploadTemplate.value = ""
+                  Static.formTemplateUpload = null
                 }
               }}
             >
@@ -105,7 +113,8 @@ export default function () {
               class="btn btn__primary"
               onclick={() => {
                 if (Static.formData) {
-                  Func.updateBD()
+
+                  Func.updateBD("Dashboard", Static.formData)
                   Ref.UploadUsers.value = ""
                   Static.formData = null
                 }
@@ -144,7 +153,6 @@ export default function () {
             class="btn btn__primary"
             onclick={() => {
               if (Ref.inputEmail.value != "") {
-                // console.log('=7eb08c=', this.Ref.inputEmail.value)
                 Static.sendTo = Ref.inputEmail.value
                 Func.makeRequest()
               }
@@ -163,64 +171,5 @@ export default function () {
 
 
     </div>
-    // <div class="home section">
-    //   <div class="dashboard">
-    //     <div>
-    //       <div>
-    //         <div>Пользователей: {this.Static.record.documentsCount} </div>
-    //         <div>Дней рождений сегодня: {this.Static.record.countBirtdays} </div>
-    //         <div>Поздравлено сегодня: {this.Static.record.countLogs} </div>
-    //         <div></div>
-    //       </div>
-    //     </div>
-    //     <br />
-    //     <br />
-    //     <br />
-    //     <br />
-    //     <br />
-
-    //     <button
-    //       onclick={() => {
-    //         if (this.Static.formData) {
-    //           this.fn("updateBD")
-    //           this.Ref.inputField.value = ""
-    //           this.Static.formData = null
-    //           // this.Static.records = []
-    //         }
-
-    //       }}
-    //     >
-    //       Отправить
-    //     </button>
-    //   </div>
-    //   <br />
-    //   <div>
-    //     {
-    //       this.Static.usersAdded.documentsInserted == null ? <div></div> :
-    //         <div>Пользователей добавлено: {this.Static.usersAdded.documentsInserted}</div>
-    //     }
-
-    //   </div>
-    //   <br />
-    //   <button
-    //     onclick={() => {
-    //       if (this.Static.record.countBirtdays != 0) {
-    //         this.Static.params.sendAll = true
-    //         this.fn("makeRequest")
-    //       }
-    //     }}
-    //   >
-    //     Поздравить всех
-    //   </button>
-    //   <br />
-    //   <div>
-    //     {
-    //       this.Static.record.sendEmailresult == "" ? <div></div> :
-    //         <div>
-    //           {this.Static.record.sendEmailresult}
-    //         </div>
-    //     }
-    //   </div>
-    // </div >
   )
 }

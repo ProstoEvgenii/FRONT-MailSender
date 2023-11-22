@@ -19,19 +19,29 @@ front.func.getURL = function () {
     Static.sendTo = null
     return url
 }
-
-front.func.updateBD = async function () {
-    const response = await fetch("/api/Dashboard", {
+front.func.sendPost = async function (route, body) {
+    console.log('=a115f2=', route, body)
+    const response = await fetch(`/api/${route}`, {
         method: "POST",
-        body: this.Static.formData
+        body: body
     });
-    Static.usersAdded = await response.json()
+    var responseData = await response.json()
     Func.makeRequest()
+    Fn.init()
     // if (!response.ok) {
     //   this.init()
     //   throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
     // }
-    Fn.init()
+    return responseData
+
+}
+
+front.func.updateBD = async function (route, body) {
+    Static.usersAdded = Func.sendPost(route, body)
+}
+
+front.func.updateTemplate = async function (route, body) {
+    Static.TemplateAdded = Func.sendPost(route, body)
 }
 
 front.func.makeRequest = async function () {
@@ -45,9 +55,6 @@ front.loader = () => {
     Static.record = []
     Static.usersAdded = []
 
-    // if (!this.Static.usersAdded.documentsInserted){
-    //     console.log('=71b308=',this.Static.usersAdded.documentsInserted)
-    // }
 
     Static.SendAutoAt = null
     Static.sendTo = null

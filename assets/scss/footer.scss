@@ -2,7 +2,6 @@
 @import 'utils/globalClass.scss';
 
 .footer {
-    // margin-top: 100px;
     flex-shrink: 0;
     width: 100%;
     z-index: 500;
@@ -12,6 +11,7 @@
     overflow: hidden;
     background: var(--primary);
     color: var(--white);
+    order: 1;
 
 
     &_inner {

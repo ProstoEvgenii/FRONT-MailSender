@@ -209,7 +209,7 @@ export default function () {
             </td>
             <td class="history_table__cell">
               <input
-                placeholder=""
+                placeholder="Название события"
                 ref="inputTime"
                 class="field__input "
                 type="text"
