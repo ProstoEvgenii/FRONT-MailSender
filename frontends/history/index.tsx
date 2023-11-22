@@ -18,9 +18,7 @@ front.func.makeRequest = async function () {
 
     const response = await fetch(url);
     Static.response = await response.json()
-    // this.Static.currentPage = this.Static.response.pageNumber
     Static.records = Static.response.records
-    // console.log('=2ced7f=',this.Static.records)
 
 
     if (!Static.records) {

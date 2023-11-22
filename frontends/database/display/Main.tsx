@@ -43,17 +43,12 @@ export default function () {
   return (
     <div class="history_inner">
       <div class="database_info">
-
-
-        {/* {
+        {
           this.Static.records == null ? <span class="bold"></span> :
-            <p class="history_info__text">Пользователей: <span class="bold">{this.Static.record?.usersCount}</span></p>
-        } */}
-
+            <p class="history_info__text">Пользователей: <span class="bold">{Static.response?.usersCount}</span></p>
+        }
         <div class="history_info__details">
-
         </div>
-
       </div>
       <div class="info_send">
         <div class="input_field">

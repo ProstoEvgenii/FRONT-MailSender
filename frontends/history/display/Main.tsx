@@ -13,13 +13,11 @@ const RenderTable = function ({ items }) {
     )
   }
 
-
   return (
     <tbody class="history_table-body">
       {
         items.map((item, index) => {
           return (
-
             <tr>
               <td class="history_table__cell">{(index + 1 + (Static.currentPage - 1) * Static.limitPerPage)}</td>
               <td class="history_table__cell">{item.LastName}</td>
@@ -28,7 +26,6 @@ const RenderTable = function ({ items }) {
               <td class="history_table__cell">{item.DateOfBirth}</td>
               <td class="history_table__cell">{item.Email}</td>
             </tr>
-
           )
         })
       }
@@ -38,7 +35,6 @@ const RenderTable = function ({ items }) {
 }
 
 export default function () {
-  // console.log('=b011af=',)
   return (
     <div class="history_inner">
 
@@ -46,16 +42,16 @@ export default function () {
         {/* <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">55</span></p> */}
         {
           Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-            <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">{Static.record.logsCount}</span></p>
+            <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">{Static.response.logsCount}</span></p>
         }
         <div class="history_info__details">
           {
             Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Вчера: <span class="bold">{Static.record.yesterdayLogsCount}</span></p>
+              <p class="history_info__text">Вчера: <span class="bold">{Static.response.yesterdayLogsCount}</span></p>
           }
           {
             Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Сегодня: <span class="bold">{Static.record.todayLgsCount}</span></p>
+              <p class="history_info__text">Сегодня: <span class="bold">{Static.response.todayLgsCount}</span></p>
           }
           {
             Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
@@ -69,9 +65,9 @@ export default function () {
           <img src={calendar} alt="Фильтр календар" />
         </div>
 
-        {/* <div class="history_filter__date">
+        <div class="history_filter__date">
           05.11.2023
-        </div> */}
+        </div>
       </div>
       <div class='test-container'>
         <table class="history_table">
@@ -174,8 +170,6 @@ export default function () {
                           Static.End = Static.lastPage
                         }
                         Fn.init()
-
-
                       }}
                     >
                       {item.number}</button>
@@ -193,7 +187,6 @@ export default function () {
                   element.class = 'pagination-number '
                 });
                 Static.currentPage += 1
-                // this.fn("makeRequest")
                 Func.pagination()
                 Fn.init()
               }

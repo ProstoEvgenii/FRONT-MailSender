@@ -1,4 +1,4 @@
-import { Cemjsx, Static, Fn, Func, Ref, front } from "cemjs-all"
+import { Cemjsx, Static, Fn, Func, Ref, } from "cemjs-all"
 
 
 const RenderTable = function ({ items }) {
@@ -26,17 +26,26 @@ const RenderTable = function ({ items }) {
                 {item.templateName}
               </td>
               <td class="history_table__cell">
-                {item.sendAt}
+                {item.sendAt}:00
               </td>
               <td class="history_table__cell">{item.isDaily ? "Ежедневно" : `${item.day}.${item.month}`}</td>
-              {/* <td class="history_table__cell">{item.Email}</td> */}
               <td class="history_table__cell">
                 <button
+                  class={["butn", item.active ? 'btn__active' : 'btn__passive']}
                   onclick={() => {
-                    console.log('=f5e25d=', item.name)
+                    Static.eventForm = item
+
+                    Static.eventForm.active = !item.active
+                    Func.updateEvents(Static.eventForm)
+                    Func.makeRequest()
                   }}
                 >
-                </button></td>
+                  {
+                    item.active ? "Активно" : "Неактивно"
+                  }
+
+                </button>
+              </td>
             </tr>
           )
         })
@@ -45,10 +54,61 @@ const RenderTable = function ({ items }) {
   )
 }
 
-const RenderOptions = function ({ items }) {
+const RenderOptionsFromArray = function ({ items }) {
+  if (!items) {
+    return (
+      < select name="" id="" >
+        <option value="" >Выберите шаблон</option>
+        <option value="">Не найдены</option>
+      </select>
+    )
+  }
+  return (
+    < select name="" id=""
+      onchange={(e) => {
+        Static.eventForm.templateName = e.target.value
+      }}
+    >
+      <option value="">Выберите шаблон</option>
+      {
+        items.map((item, index) => {
+          return (
+            <option value={item}>{item}</option>
+          )
 
+        })
+      }
+    </select >
+  )
 }
+const RenderOptionsFromInt = function ({ numberMin, numberMax, placeholder, formKey }) {
+  const options = [];
 
+  for (let i = numberMin; i < numberMax; i++) {
+    if (formKey == "sendAt") {
+      options.push(<option key={i} value={i}>{i}:00</option>);
+    } else {
+      options.push(<option key={i} value={i}>{i}</option>);
+    }
+
+  }
+  return (
+    < select name="" id=""
+      onchange={(e) => {
+        Static.eventForm[formKey] = parseInt(e.target.value)
+      }}
+    >
+      <option value="0">{placeholder}</option>
+      {
+        options.map((item, index) => {
+          return (
+            item
+          )
+        })
+      }
+    </select >
+  )
+}
 
 
 
@@ -60,17 +120,6 @@ export default function () {
       <div class="settings__fields__container" >
         <p class="settingsTitle">Настройка почты</p>
         <div class="settings__fields">
-          {/* <input
-                        value={this.Static.data.template ? this.Static.settingsForm.template = this.Static.data.template : ""}
-                        placeholder="Название шаблона письма"
-                        ref="inputTemplateName"
-                        class="field__input"
-                        type="text"
-                        oninput={(e) => {
-                            this.Static.settingsForm.template = e.target.value
-                        }}
-                    /> */}
-
           <input
             value={Static.data ? Static.settingsForm.emailLogin = Static.data.emailLogin : ""}
             placeholder="E-mail"
@@ -192,62 +241,33 @@ export default function () {
               />
             </td>
             <td class="history_table__cell">
-              {/* <input
-                placeholder=""
-                ref="inputTime"
-                class="field__input "
-                type="text"
-                oninput={(e) => {
-                  Static.eventForm.templateName = e.target.value
-                  console.log('=b300e5=', e.target.value)
-                }}
-              /> */}
-              <select name="" id="">
-                <RenderOptions items={Static.data ? Static.data.records : []} />
-                <option value="">Привет</option>
-
-              </select>
+              <RenderOptionsFromArray items={Static.data ? Static.data.templates : []} />
             </td>
             <td class="history_table__cell">
-              <input
-                placeholder=""
-                ref="inputTime"
-                class="field__input "
-                type="text"
-                oninput={(e) => {
-                  Static.eventForm.sendAt = parseInt(e.target.value)
-                }}
-              />
+              <RenderOptionsFromInt numberMin={0} numberMax={24} placeholder={"Выберите время"} formKey={"sendAt"} />
             </td>
             <td class="history_table__cell">
               День:
-              <input
-                placeholder=""
-                ref="inputTime"
-                class="field__input "
-                type="text"
-                oninput={(e) => {
-                  Static.eventForm.day = parseInt(e.target.value)
-                }}
-              />
+              <RenderOptionsFromInt numberMin={1} numberMax={32} placeholder={"Выберите день"} formKey={"day"} />
               Месяц:
-              <input
-                placeholder=""
-                ref="inputTime"
-                class="field__input "
-                type="text"
-                oninput={(e) => {
-                  Static.eventForm.month = parseInt(e.target.value)
-                }}
-              />
+              <RenderOptionsFromInt numberMin={1} numberMax={13} placeholder={"Выберите месяц"} formKey={"month"} />
             </td>
             <td class="history_table__cell">
               <button
                 class="butn btn__primary "
                 onclick={() => {
+                  console.log('=b94db5=', Static.eventForm)
                   if (Static.add) {
-                    Ref.newEvent.classList.add("hidden")
+
+                    if (Static.eventForm.day == 0 && Static.eventForm.month == 0) {
+                      Static.eventForm.isDaily = true
+
+
+                    } else {
+                      Static.eventForm.isDaily = false
+                    }
                     Func.validateFormEvent()
+                    Ref.newEvent.classList.add("hidden")
                     Static.add = false
                   }
                 }}
@@ -259,7 +279,6 @@ export default function () {
                 onclick={() => {
                   if (Static.add) {
                     Ref.newEvent.classList.add("hidden")
-                    Func.validateFormEvent()
                     Static.add = false
                   }
                 }}

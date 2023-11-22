@@ -43,7 +43,7 @@ export default function () {
                 uuid: localStorage.uuid
               }
               let answer = await front.Services.functions.sendApi("/api/UserAuth", data)
-              console.log('=d9d066=', data)
+              // console.log('=d9d066=', data)
               if (answer.error) {
                 alert(answer.error)
                 return

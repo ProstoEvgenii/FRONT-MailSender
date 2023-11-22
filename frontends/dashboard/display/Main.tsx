@@ -6,7 +6,9 @@ export default function () {
   return (
     <div class="info_inner">
       <div class="info_desc">
-        <p>Пользователей:
+      <div class="info_desc__email">
+        <p>
+          Пользователей:
           {
             Static.record.usersCount == null ? <span class="bold">-</span> :
               <span class="bold">
@@ -14,6 +16,16 @@ export default function () {
               </span>
           }
         </p>
+        <p>
+          Дней рождений сегодня:
+          {
+            Static.record.countBirtdays == null ? <span class="bold">-</span> :
+              <span class="bold">
+                {Static.record.countBirtdays}
+              </span>
+          }
+        </p>
+        </div>
         <div class="info_desc__email">
           <p>Всего отправлено писем:
             {
@@ -35,48 +47,42 @@ export default function () {
       </div>
       <div class="info_settings">
         <div class="info_settings__component">
-          <p>Настройка расписания</p>
-          <div class="toggle_row" >
-            <p>Автоматическая отправка</p>
-            <div class="switch">
-              {/* <div class="switch__1">
-                <input
-                  id="switch-1"
-                  type="checkbox"
-                  ref="switch"
-                  onchange={(e) => {
-                    e.target.checked 
-                  }}
+          <p>Загрузка шаблона</p>
+          <div class="users_upload">
+            <div>
+              <input
+                type="file"
+                ref="UploadTemplate"
+                accept=".html"
 
-                />
-                <label for="switch-1"></label>
-              </div> */}
+                onchange={() => {
+                  if (Ref.UploadUsers.files[0].type == "application/json") {
+                    Static.formData = new FormData();
+                    Static.formData.append("jsonFile", Ref.UploadUsers.files[0]);
+                  }
+                }}
+              />
             </div>
-
-            <input
-              value={Static.record.sendAutoAt ? Static.SendAutoAt = Static.record.sendAutoAt : ""}
-              placeholder=""
-              ref="inputTime"
-              class="field__input"
-              type="text"
-              oninput={(e) => {
-                Static.SendAutoAt = e.target.value
-              }}
-            />
-            <p class="minutes">:00</p>
             <button
               class="btn btn__primary"
               onclick={() => {
-                if (Ref.inputTime.value != "") {
-                  Func.makeRequest()
+                if (Static.formData) {
+                  Func.updateBD()
+                  Ref.UploadUsers.value = ""
+                  Static.formData = null
                 }
               }}
             >
-              Сохранить
+              Загрузить
             </button>
+
           </div>
-
-
+          <p>
+            {
+              Static.usersAdded.documentsInserted == null ? <span></span> :
+                <span class="upload_response">Пользователей добавлено: {Static.usersAdded.documentsInserted}</span>
+            }
+          </p>
         </div>
         <div class="info_settings__component">
           <p>Загрузка пользователей</p>

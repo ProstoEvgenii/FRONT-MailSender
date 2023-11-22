@@ -21,7 +21,6 @@ front.func.makeRequest = async function () {
 
     const response = await fetch(url);
     Static.data = await response.json()
-    console.log('=6f7e12=', Static.data)
     Fn.init()
 
 }
@@ -42,33 +41,22 @@ front.func.validateFormEvent = function () {
         Static.eventForm.templateName === "" ||
         Static.eventForm.from === "" ||
         Static.eventForm.subject === "" ||
-        Static.eventForm.day === 0 ||
-        Static.eventForm.month === 0 ||
-        Static.eventForm.sendAt === null ||
-        !Static.eventForm.month ||
-        !Static.eventForm.day
+        Static.eventForm.sendAt == null
     ) {
         console.log('=386d17=', "Форма не заполнена полностью")
     } else {
-        Func.updateEvents()
+        Func.updateEvents(Static.eventForm)
         Func.makeRequest()
     }
 }
 
-
-
-front.func.updateEvents = async function () {
+front.func.updateEvents = async function (updateForm) {
     const response = await fetch("/api/Events", {
         method: "POST",
-        body: JSON.stringify(Static.eventForm)
+        body: JSON.stringify(updateForm)
     });
     Static.postResponse = await response.json()
     console.log('=150db9=', Static.postResponse)
-
-    // if (!response.ok) {
-    //   this.init()
-    //   throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
-    // }
     Fn.init()
 }
 
@@ -79,19 +67,10 @@ front.func.updateSettings = async function () {
     });
     Static.postResponse = await response.json()
     console.log('=150db9=', Static.postResponse)
-    // if (!response.ok) {
-    //   this.init()
-    //   throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
-    // }
     Fn.init()
 }
 
 front.loader = () => {
-    Static.getTempltes = false
-    Static.arr = [
-        11111,
-        22222,
-    ]
     Func.makeRequest()
     Static.settingsForm = {
         template: "",
@@ -104,7 +83,7 @@ front.loader = () => {
     Static.eventForm = {
         name: "",
         templateName: "",
-        sendAt: 0,
+        sendAt: null,
         from: "",
         subject: "",
         isDaily: false,
