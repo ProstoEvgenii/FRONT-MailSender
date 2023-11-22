@@ -1,6 +1,6 @@
 import { Cemjsx, Static, Fn, Func, Ref } from "cemjs-all"
 import calendar from '@svg/ann/calendar.svg'
-
+import magn from '@svg/ann/seach_magnifier.svg'
 const RenderTable = function ({ items }) {
 
   if (!items) {
@@ -39,35 +39,42 @@ export default function () {
     <div class="history_inner">
 
       <div class="history_info">
-        {/* <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">55</span></p> */}
         {
           Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-            <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">{Static.response.logsCount}</span></p>
+            <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">{Static.response?.logsCount}</span></p>
         }
         <div class="history_info__details">
           {
             Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Вчера: <span class="bold">{Static.response.yesterdayLogsCount}</span></p>
+              <p class="history_info__text">Вчера: <span class="bold">{Static.response?.yesterdayLogsCount}</span></p>
           }
           {
             Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Сегодня: <span class="bold">{Static.response.todayLgsCount}</span></p>
+              <p class="history_info__text">Сегодня: <span class="bold">{Static.response?.todayLgsCount}</span></p>
           }
           {
             Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Завтра: <span class="bold">{Static.record.tommorowLogsCount}</span></p>
+              <p class="history_info__text">Завтра: <span class="bold">{Static.record?.tommorowLogsCount}</span></p>
           }
         </div>
       </div>
 
-      <div class="history_filter">
-        <div class="history_filter__calendar">
-          <img src={calendar} alt="Фильтр календар" />
+      <div class="info_send">
+        <div class="input_field">
+          <input type="email" placeholder="Поиск" class="input_field__input" ref="seach" />
+          <div class="input_field__icon">
+            <img src={magn} alt="Поиск" />
+          </div>
         </div>
-
-        <div class="history_filter__date">
-          05.11.2023
-        </div>
+        <button
+          class="btn btn__primary"
+          onclick={() => {
+            Static.seach = Ref.seach.value
+            Func.makeRequest()
+          }}
+        >
+          Найти
+        </button>
       </div>
       <div class='test-container'>
         <table class="history_table">
@@ -108,7 +115,6 @@ export default function () {
                   return (
                     <button class={item.class}
                       onclick={(e) => {
-                        console.log('=1b0f05=', "first_two")
                         Static.Pages.forEach(element => {
                           element.class = 'pagination-number '
                         });
@@ -159,7 +165,6 @@ export default function () {
                         Static.Pages.forEach(element => {
                           element.class = 'pagination-number '
                         });
-                        console.log('=d3212c=', "two_last")
                         Static.currentPage = item.number
                         Func.pagination()
                         item.class += "active"

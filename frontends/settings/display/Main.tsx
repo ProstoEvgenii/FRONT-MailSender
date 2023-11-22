@@ -221,7 +221,6 @@ export default function () {
             <td class="history_table__cell">
               <input
                 placeholder=""
-                ref="inputTime"
                 class="field__input "
                 type="text"
                 oninput={(e) => {

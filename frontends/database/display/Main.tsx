@@ -35,11 +35,7 @@ const RenderTable = function ({ items }) {
 }
 
 export default function () {
-  // if (!this.Static.records.lenght){
-  //   return (
-  //     <div>load</div>
-  //   )
-  // }
+
   return (
     <div class="history_inner">
       <div class="database_info">
@@ -52,7 +48,7 @@ export default function () {
       </div>
       <div class="info_send">
         <div class="input_field">
-          <input type="email" placeholder="Поиск" class="input_field__input" />
+          <input type="email" placeholder="Поиск" class="input_field__input" ref="seach" />
           <div class="input_field__icon">
             <img src={magn} alt="Поиск" />
           </div>
@@ -60,7 +56,8 @@ export default function () {
         <button
           class="btn btn__primary"
           onclick={() => {
-
+            Static.seach = Ref.seach.value
+            Func.makeRequest()
           }}
         >
           Найти

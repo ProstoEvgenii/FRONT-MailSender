@@ -50,21 +50,19 @@ export default function () {
           <p>Загрузка шаблона</p>
           <div class="users_upload">
             <input
+              class="field__input"
               ref="UploadTemplateName"
+              style="width: 9rem"
               type="text" />
             <div>
               <input
                 type="file"
                 ref="UploadTemplate"
                 accept=".html"
-
                 onchange={() => {
-
                   if (Ref.UploadTemplate.files[0].type == "text/html") {
                     Static.formTemplateUpload = new FormData();
                     Static.formTemplateUpload.append("jsonFileTemplate", Ref.UploadTemplate.files[0])
-
-
                   }
                 }}
               />
@@ -72,7 +70,6 @@ export default function () {
             <button
               class="btn btn__primary"
               onclick={() => {
-                // console.log('=698dbd=', Ref.UploadTemplateName.value)
                 if (Static.formTemplateUpload && Ref.UploadTemplateName.value) {
                   Static.formTemplateUpload.append("name", Ref.UploadTemplateName.value)
                   Func.updateTemplate("Templates", Static.formTemplateUpload)
@@ -83,7 +80,6 @@ export default function () {
             >
               Загрузить
             </button>
-
           </div>
           <p>
             {
@@ -100,7 +96,6 @@ export default function () {
                 type="file"
                 ref="UploadUsers"
                 accept=".json"
-
                 onchange={() => {
                   if (Ref.UploadUsers.files[0].type == "application/json") {
                     Static.formData = new FormData();
@@ -113,12 +108,10 @@ export default function () {
               class="btn btn__primary"
               onclick={() => {
                 if (Static.formData) {
-
                   Func.updateBD("Dashboard", Static.formData)
                   Ref.UploadUsers.value = ""
                   Static.formData = null
                 }
-
               }}
             >
               Загрузить
@@ -168,8 +161,6 @@ export default function () {
           }
         </div>
       </div>
-
-
     </div>
   )
 }

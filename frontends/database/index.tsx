@@ -11,12 +11,17 @@ front.func.getURL = function () {
     if (Static.currentPage != 0) {
         url += `&page=${Static.currentPage}`
     }
+    if (Static.seach != "") {
+        url += `&seach=${Static.seach}`
+    }
     return url
 }
 
 
 front.func.makeRequest = async function () {
+    
     let url = Func.getURL()
+
 
     const response = await fetch(url);
     Static.response = await response.json()
@@ -26,7 +31,7 @@ front.func.makeRequest = async function () {
 
     if (!Static.records) {
         Static.records = []
-        console.log('=8df5ac=', "Пустой массив")
+        // console.log('=8df5ac=', "Пустой массив")
         return
     }
 
@@ -80,7 +85,7 @@ front.func.pagination = function () {
 
 front.loader = () => {
     Static.records = []
-
+    Static.seach = ""
     Static.currentPage = 1
 
     Static.outertDigitsNumber = 2

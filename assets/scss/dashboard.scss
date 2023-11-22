@@ -196,7 +196,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
 
 
   &_preview {
-    padding-top: 2vw;
+    padding: 2vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,7 +219,7 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
   &_send {
     display: flex;
     justify-content: center;
-    padding-top: 1.5vw;
+
     gap: 1.5vw;
   }
 

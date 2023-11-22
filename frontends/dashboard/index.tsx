@@ -20,7 +20,7 @@ front.func.getURL = function () {
     return url
 }
 front.func.sendPost = async function (route, body) {
-    console.log('=a115f2=', route, body)
+    // console.log('=a115f2=', route, body)
     const response = await fetch(`/api/${route}`, {
         method: "POST",
         body: body
