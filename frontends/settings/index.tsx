@@ -43,7 +43,7 @@ front.func.validateFormEvent = function () {
         Static.eventForm.subject === "" ||
         Static.eventForm.sendAt == null
     ) {
-        console.log('=386d17=', "Форма не заполнена полностью")
+        alert( "Форма не заполнена полностью")
     } else {
         Func.updateEvents(Static.eventForm)
         Func.makeRequest()
@@ -55,8 +55,13 @@ front.func.updateEvents = async function (updateForm) {
         method: "POST",
         body: JSON.stringify(updateForm)
     });
-    Static.postResponse = await response.json()
-    console.log('=150db9=', Static.postResponse)
+    Static.updateEventsResponse = await response.json()
+    if(Static.updateEventsResponse.documentsModified){
+        alert("Событие успешно обновлено.")
+    }else if (Static.updateEventsResponse.documentsInserted){
+        alert("Событие успешно добавлено.")
+    }
+    
     Fn.init()
 }
 
@@ -65,8 +70,7 @@ front.func.updateSettings = async function () {
         method: "POST",
         body: JSON.stringify(Static.settingsForm)
     });
-    Static.postResponse = await response.json()
-    console.log('=150db9=', Static.postResponse)
+    Static.updateSettings = await response.json()
     Fn.init()
 }
 

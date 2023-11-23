@@ -11,15 +11,15 @@ front.func.getURL = function () {
     if (Static.currentPage != 0) {
         url += `&page=${Static.currentPage}`
     }
-    if (Static.seach != "") {
+    if (Static.seach.length > 2) {
         url += `&seach=${Static.seach}`
     }
+
     return url
 }
 
 
 front.func.makeRequest = async function () {
-    
     let url = Func.getURL()
 
 
@@ -31,7 +31,7 @@ front.func.makeRequest = async function () {
 
     if (!Static.records) {
         Static.records = []
-        // console.log('=8df5ac=', "Пустой массив")
+        Fn.init()
         return
     }
 
@@ -91,8 +91,6 @@ front.loader = () => {
     Static.outertDigitsNumber = 2
     Static.Begin = 0
     Static.End = 5
-
-    Static.test = 1
     Func.makeRequest()
     return
 }

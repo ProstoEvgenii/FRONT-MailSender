@@ -255,13 +255,9 @@ export default function () {
               <button
                 class="butn btn__primary "
                 onclick={() => {
-                  console.log('=b94db5=', Static.eventForm)
                   if (Static.add) {
-
                     if (Static.eventForm.day == 0 && Static.eventForm.month == 0) {
                       Static.eventForm.isDaily = true
-
-
                     } else {
                       Static.eventForm.isDaily = false
                     }
@@ -289,6 +285,11 @@ export default function () {
         </thead>
         <RenderTable items={Static.data ? Static.data.records : []} />
       </table>
+      <div
+        class={[!Static.updateEventsResponse ? "" : "hidden"]}
+      >
+        {Static.updateEventsResponse}
+      </div>
       <button
         class="butn btn__primary "
         onclick={async () => {

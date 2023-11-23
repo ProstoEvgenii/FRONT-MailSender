@@ -8,7 +8,11 @@ front.listener.finish = () => {
 
 front.func.getURL = function () {
     let url = `/api/History?uuid=${localStorage.uuid}`
-    Static.record = []
+
+    if (Static.seach.length > 2) {
+        url += `&seach=${Static.seach}`
+    }
+
     return url
 }
 
@@ -23,7 +27,7 @@ front.func.makeRequest = async function () {
 
     if (!Static.records) {
         Static.records = []
-        console.log('=8df5ac=', "Пустой массив")
+        Fn.init()
         return
     }
 
@@ -41,14 +45,13 @@ front.func.makeRequest = async function () {
 
 front.loader = () => {
     Static.records = []
-
+    Static.seach = ""
     Static.currentPage = 1
 
     Static.outertDigitsNumber = 2
     Static.Begin = 0
     Static.End = 5
 
-    Static.test = 1
     Func.makeRequest()
     return
 }

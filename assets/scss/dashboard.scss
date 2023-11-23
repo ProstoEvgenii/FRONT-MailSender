@@ -82,6 +82,12 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
       justify-content: space-between;
       align-items: center;
       gap: 1vw;
+      .inputs_form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vw;
+      }
 
       
     }

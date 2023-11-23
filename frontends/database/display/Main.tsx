@@ -48,12 +48,20 @@ export default function () {
       </div>
       <div class="info_send">
         <div class="input_field">
-          <input type="email" placeholder="Поиск" class="input_field__input" ref="seach" />
+          <input type="text" placeholder="Поиск" class="input_field__input" ref="seach"
+            oninput={(e) => {
+              if (e.target.value.length) {
+                Static.seach = e.target.value
+                Func.makeRequest()
+              }
+
+            }}
+          />
           <div class="input_field__icon">
             <img src={magn} alt="Поиск" />
           </div>
         </div>
-        <button
+        {/* <button
           class="btn btn__primary"
           onclick={() => {
             Static.seach = Ref.seach.value
@@ -61,7 +69,7 @@ export default function () {
           }}
         >
           Найти
-        </button>
+        </button> */}
       </div>
       <br />
       <div class='test-container'>
