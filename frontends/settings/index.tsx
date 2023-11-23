@@ -41,7 +41,9 @@ front.func.validateFormEvent = function () {
         Static.eventForm.templateName === "" ||
         Static.eventForm.from === "" ||
         Static.eventForm.subject === "" ||
-        Static.eventForm.sendAt == null
+        Static.eventForm.sendAt == null ||
+        !Static.eventForm.day ||
+        !Static.eventForm.month
     ) {
         alert( "Форма не заполнена полностью")
     } else {

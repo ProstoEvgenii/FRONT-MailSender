@@ -3,7 +3,7 @@ import calendar from '@svg/ann/calendar.svg'
 import magn from '@svg/ann/seach_magnifier.svg'
 const RenderTable = function ({ items }) {
 
-  if (!items) {
+  if (!items.length) {
     return (
       <tbody class="history_table-body">
         <tr>
@@ -40,21 +40,21 @@ export default function () {
 
       <div class="history_info">
         {
-          Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
+          Static.response == null ? <p class="history_info__text"><span class="bold"></span></p> :
             <p class="history_info__text">Всего отправлено поздравлений: <span class="bold">{Static.response?.logsCount}</span></p>
         }
         <div class="history_info__details">
           {
-            Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
+            Static.response == null ? <p class="history_info__text"><span class="bold"></span></p> :
               <p class="history_info__text">Вчера: <span class="bold">{Static.response?.yesterdayLogsCount}</span></p>
           }
           {
-            Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Сегодня: <span class="bold">{Static.response?.todayLgsCount}</span></p>
+            Static.response == null ? <p class="history_info__text"><span class="bold"></span></p> :
+              <p class="history_info__text">Сегодня: <span class="bold">{Static.response?.todayLogsCount}</span></p>
           }
           {
-            Static.record == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Завтра: <span class="bold">{Static.record?.tommorowLogsCount}</span></p>
+            Static.response == null ? <p class="history_info__text"><span class="bold"></span></p> :
+              <p class="history_info__text">Завтра: <span class="bold">{Static.response?.tommorowLogsCount}</span></p>
           }
         </div>
       </div>

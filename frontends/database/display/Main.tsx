@@ -5,7 +5,7 @@ import magn from '@svg/ann/seach_magnifier.svg'
 
 const RenderTable = function ({ items }) {
 
-  if (!items) {
+  if (!items.length) {
     return (
       <tbody class="history_table-body">
         <tr>
@@ -40,7 +40,7 @@ export default function () {
     <div class="history_inner">
       <div class="database_info">
         {
-          this.Static.records == null ? <span class="bold"></span> :
+          Static.response == null ? <span class="bold"></span> :
             <p class="history_info__text">Пользователей: <span class="bold">{Static.response?.usersCount}</span></p>
         }
         <div class="history_info__details">

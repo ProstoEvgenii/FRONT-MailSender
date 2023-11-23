@@ -8,12 +8,15 @@ front.listener.finish = () => {
 
 front.func.getURL = function () {
     let url = `/api/Database?uuid=${localStorage.uuid}`
-    if (Static.currentPage != 0) {
-        url += `&page=${Static.currentPage}`
-    }
     if (Static.seach.length > 2) {
         url += `&seach=${Static.seach}`
+        Static.currentPage = 1
     }
+    if (Static.currentPage != 0) {
+        url += `&page=${Static.currentPage}`
+        
+    }
+    
 
     return url
 }
@@ -37,7 +40,9 @@ front.func.makeRequest = async function () {
 
 
     Static.limitPerPage = 15
-    Static.pageCount = Math.ceil(Static.response.usersCount / Static.limitPerPage)
+    
+    Static.pageCount = Math.ceil(Static.response.totalFound / Static.limitPerPage)
+    // console.log('=7154f9=',Static.pageCount)
     Static.Pages = []
     for (let i = 1; i <= Static.pageCount; i++) {
         Static.Pages.push({ number: i, class: 'pagination-number ' })

@@ -130,7 +130,6 @@ export default function () {
               Static.settingsForm.emailLogin = e.target.value
             }}
           />
-
           <input
             placeholder="Пароль приложения"
             ref="inputEmailPass"
