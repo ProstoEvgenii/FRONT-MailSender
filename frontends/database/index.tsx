@@ -42,7 +42,6 @@ front.func.makeRequest = async function () {
     Static.limitPerPage = 15
     
     Static.pageCount = Math.ceil(Static.response.totalFound / Static.limitPerPage)
-    // console.log('=7154f9=',Static.pageCount)
     Static.Pages = []
     for (let i = 1; i <= Static.pageCount; i++) {
         Static.Pages.push({ number: i, class: 'pagination-number ' })

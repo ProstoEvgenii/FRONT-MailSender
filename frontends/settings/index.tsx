@@ -26,8 +26,12 @@ front.func.makeRequest = async function () {
 }
 
 front.func.validateForm = function () {
-    if (Static.settingsForm.emailLogin === "" || Static.settingsForm.emailPass === "" || Static.settingsForm.smtp === "" || Static.settingsForm.port === 0 || Static.settingsForm.port === "") {
-        console.log('=386d17=', "Форма не заполнена полностью")
+    if (Static.settingsForm.emailLogin === "" ||
+     Static.settingsForm.emailPass === "" ||
+      Static.settingsForm.smtp === "" ||
+       Static.settingsForm.port === 0 ||
+        Static.settingsForm.port === "") {
+        alert("Форма не заполнена полностью")
 
     } else {
         Func.updateSettings()
@@ -41,9 +45,7 @@ front.func.validateFormEvent = function () {
         Static.eventForm.templateName === "" ||
         Static.eventForm.from === "" ||
         Static.eventForm.subject === "" ||
-        Static.eventForm.sendAt == null ||
-        !Static.eventForm.day ||
-        !Static.eventForm.month
+        Static.eventForm.sendAt == null 
     ) {
         alert( "Форма не заполнена полностью")
     } else {
@@ -73,13 +75,17 @@ front.func.updateSettings = async function () {
         body: JSON.stringify(Static.settingsForm)
     });
     Static.updateSettings = await response.json()
+    if(Static.updateSettings.documentsModified){
+        alert("Настройки успешно сохранены.")
+    }else if (Static.updateEventsResponse.documentsInserted){
+        alert("Настройки успешно сохранены.")
+    }
     Fn.init()
 }
 
 front.loader = () => {
     Func.makeRequest()
     Static.settingsForm = {
-        template: "",
         emailLogin: "",
         emailPass: "",
         smtp: "",

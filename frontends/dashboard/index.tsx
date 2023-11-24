@@ -20,7 +20,6 @@ front.func.getURL = function () {
     return url
 }
 front.func.sendPost = async function (route, body) {
-    // console.log('=a115f2=', route, body)
     const response = await fetch(`/api/${route}`, {
         method: "POST",
         body: body
@@ -37,11 +36,17 @@ front.func.sendPost = async function (route, body) {
 }
 
 front.func.updateBD = async function (route, body) {
-    Static.usersAdded = Func.sendPost(route, body)
+    Static.usersAdded = await Func.sendPost(route, body)
 }
 
 front.func.updateTemplate = async function (route, body) {
-    Static.TemplateAdded = Func.sendPost(route, body)
+    Static.TemplateAdded = await Func.sendPost(route, body)
+    console.log('=afe58f=', Static.TemplateAdded)
+    if (Static.TemplateAdded.documentsModified) {
+        alert("Шаблон успешно обновлен.")
+    } else if (Static.TemplateAdded.documentsInserted) {
+        alert("Шаблон успешно добавлен.")
+    }
 }
 
 front.func.makeRequest = async function () {
