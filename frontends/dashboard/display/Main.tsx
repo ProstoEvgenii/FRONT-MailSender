@@ -50,29 +50,30 @@ export default function () {
           <p>Загрузка шаблона</p>
           <div class="users_upload">
             <div class="inputs_form">
-            <input
-              class="field__input"
-              ref="UploadTemplateName"
-              placeholder="Название шаблона"
-              style="width: 13.5rem"
-              type="text" />
-            <input
-              type="file"
-              ref="UploadTemplate"
-              accept=".html"
-              onchange={() => {
-                if (Ref.UploadTemplate.files[0].type == "text/html") {
-                  Static.formTemplateUpload = new FormData();
-                  Static.formTemplateUpload.append("jsonFileTemplate", Ref.UploadTemplate.files[0])
-                }
-              }}
-            />
+              <input
+                class="field__input"
+                ref="UploadTemplateName"
+                placeholder="Название шаблона"
+                style="width: 13.5rem"
+                type="text" />
+              <input
+                type="file"
+                ref="UploadTemplate"
+                accept=".html"
+                onchange={() => {
+                  if (Ref.UploadTemplate.files[0].type == "text/html") {
+                    Static.formTemplateUpload = new FormData();
+                    Static.formTemplateUpload.append("jsonFileTemplate", Ref.UploadTemplate.files[0])
+                  }
+                }}
+              />
             </div>
             <button
               class="btn btn__primary"
               onclick={() => {
                 if (Static.formTemplateUpload && Ref.UploadTemplateName.value) {
                   Static.formTemplateUpload.append("name", Ref.UploadTemplateName.value)
+                  Static.formTemplateUpload.append("UUID", localStorage.uuid)
                   Func.updateTemplate("Templates", Static.formTemplateUpload)
                   Ref.UploadTemplate.value = ""
                   Static.formTemplateUpload = null
@@ -100,7 +101,8 @@ export default function () {
                 onchange={() => {
                   if (Ref.UploadUsers.files[0].type == "application/json") {
                     Static.formData = new FormData();
-                    Static.formData.append("jsonFile", Ref.UploadUsers.files[0]);
+                    Static.formData.append("jsonFile", Ref.UploadUsers.files[0])
+                    Static.formData.append("UUID", localStorage.uuid)
                   }
                 }}
               />

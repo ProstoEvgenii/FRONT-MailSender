@@ -27,9 +27,9 @@ front.func.makeRequest = async function () {
 
 front.func.validateForm = function () {
     if (Static.settingsForm.emailLogin === "" ||
-     Static.settingsForm.emailPass === "" ||
-      Static.settingsForm.smtp === "" ||
-       Static.settingsForm.port === 0 ||
+        Static.settingsForm.emailPass === "" ||
+        Static.settingsForm.smtp === "" ||
+        Static.settingsForm.port === 0 ||
         Static.settingsForm.port === "") {
         alert("Форма не заполнена полностью")
 
@@ -45,9 +45,9 @@ front.func.validateFormEvent = function () {
         Static.eventForm.templateName === "" ||
         Static.eventForm.from === "" ||
         Static.eventForm.subject === "" ||
-        Static.eventForm.sendAt == null 
+        Static.eventForm.sendAt == null
     ) {
-        alert( "Форма не заполнена полностью")
+        alert("Форма не заполнена полностью")
     } else {
         Func.updateEvents(Static.eventForm)
         Func.makeRequest()
@@ -60,12 +60,12 @@ front.func.updateEvents = async function (updateForm) {
         body: JSON.stringify(updateForm)
     });
     Static.updateEventsResponse = await response.json()
-    if(Static.updateEventsResponse.documentsModified){
+    if (Static.updateEventsResponse.documentsModified) {
         alert("Событие успешно обновлено.")
-    }else if (Static.updateEventsResponse.documentsInserted){
+    } else if (Static.updateEventsResponse.documentsInserted) {
         alert("Событие успешно добавлено.")
     }
-    
+
     Fn.init()
 }
 
@@ -75,9 +75,9 @@ front.func.updateSettings = async function () {
         body: JSON.stringify(Static.settingsForm)
     });
     Static.updateSettings = await response.json()
-    if(Static.updateSettings.documentsModified){
+    if (Static.updateSettings.documentsModified) {
         alert("Настройки успешно сохранены.")
-    }else if (Static.updateEventsResponse.documentsInserted){
+    } else if (Static.updateEventsResponse.documentsInserted) {
         alert("Настройки успешно сохранены.")
     }
     Fn.init()
@@ -89,7 +89,8 @@ front.loader = () => {
         emailLogin: "",
         emailPass: "",
         smtp: "",
-        port: 0
+        port: 0,
+        UUID: ""
     }
     Static.add = false
     Static.eventForm = {
@@ -101,6 +102,7 @@ front.loader = () => {
         isDaily: false,
         day: 0,
         month: 0,
+        UUID: localStorage.uuid,
     }
     Static.postResponse = {
         documentsInserted: 0,

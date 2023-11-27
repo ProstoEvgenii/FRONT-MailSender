@@ -41,7 +41,6 @@ front.func.updateBD = async function (route, body) {
 
 front.func.updateTemplate = async function (route, body) {
     Static.TemplateAdded = await Func.sendPost(route, body)
-    console.log('=afe58f=', Static.TemplateAdded)
     if (Static.TemplateAdded.documentsModified) {
         alert("Шаблон успешно обновлен.")
     } else if (Static.TemplateAdded.documentsInserted) {

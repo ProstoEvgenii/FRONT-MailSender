@@ -34,7 +34,7 @@ const RenderTable = function ({ items }) {
                   class={["butn", item.active ? 'btn__active' : 'btn__passive']}
                   onclick={() => {
                     Static.eventForm = item
-
+                    Static.eventForm.uuid = localStorage.uuid
                     Static.eventForm.active = !item.active
                     Func.updateEvents(Static.eventForm)
                     Func.makeRequest()

@@ -20,7 +20,6 @@ export default function () {
               <img src={email} alt="Электронная почта" />
             </div>
           </div>
-          {/* <input type="che" checked/> */}
           <div class="input_field">
             <input type="password" placeholder={Static.form.password.placeholder} class="input_field__input"
               oninput={(e: any) => {
@@ -34,7 +33,6 @@ export default function () {
               <img src={eye} alt="Показать пароль" />
             </div>
           </div>
-
           <button class="btn btn__passive"
             onclick={async () => {
               let data = {
@@ -43,7 +41,7 @@ export default function () {
                 uuid: localStorage.uuid
               }
               let answer = await front.Services.functions.sendApi("/api/UserAuth", data)
-              // console.log('=d9d066=', data)
+
               if (answer.error) {
                 alert(answer.error)
                 return
@@ -55,29 +53,6 @@ export default function () {
           >Войти</button>
         </div>
       </div>
-      {/* <div class="home_email">
-        <input ref="inputField" type="text" />
-        <button
-          onclick={async () => {
-            if (this.Ref.inputField.value != "") {
-              const response = await fetch("/api", {
-                method: "POST",
-                body: JSON.stringify({ "email": this.Ref.inputField.value })
-              });
-              if (!response.ok) {
-                throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
-              }
-              console.log('=5bfbb5=',)
-              let result = await response.json()
-              console.log('=2ec36d=', result)
-            }
-          }}
-
-
-        >
-          Отправить
-        </button>
-      </div> */}
     </main>
   )
 }
