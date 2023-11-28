@@ -25,6 +25,7 @@ const RenderTable = function ({ items }) {
               <td class="history_table__cell">{item.MiddleName}</td>
               <td class="history_table__cell">{item.DateOfBirth}</td>
               <td class="history_table__cell">{item.Email}</td>
+              <td class="history_table__cell">{item.DateCreate}</td>
             </tr>
           )
         })
@@ -61,27 +62,18 @@ export default function () {
 
       <div class="info_send">
         <div class="input_field">
-          <input type="text" placeholder="Поиск" class="input_field__input" ref="seach" 
-           oninput={(e) => {
-            if (e.target.value.length) {
-              Static.seach = e.target.value
-              Func.makeRequest()
-            }
-          }}
+          <input type="text" placeholder="Поиск" class="input_field__input" ref="seach"
+            oninput={(e) => {
+              if (e.target.value.length) {
+                Static.seach = e.target.value
+                Func.makeRequest()
+              }
+            }}
           />
           <div class="input_field__icon">
             <img src={magn} alt="Поиск" />
           </div>
         </div>
-        {/* <button
-          class="btn btn__primary"
-          onclick={() => {
-            Static.seach = Ref.seach.value
-            Func.makeRequest()
-          }}
-        >
-          Найти
-        </button> */}
       </div>
       <div class='test-container'>
         <table class="history_table">
@@ -93,6 +85,7 @@ export default function () {
               <th class="history_table__cell">Отчество</th>
               <th class="history_table__cell">Дата рождения</th>
               <th class="history_table__cell">Email</th>
+              <th class="history_table__cell">Дата отправки</th>
             </tr>
           </thead>
           <RenderTable items={Static.records} />
