@@ -90,7 +90,7 @@ front.loader = () => {
         emailPass: "",
         smtp: "",
         port: 0,
-        UUID: ""
+        UUID: "",
     }
     Static.add = false
     Static.eventForm = {
@@ -102,7 +102,7 @@ front.loader = () => {
         isDaily: false,
         day: 0,
         month: 0,
-        UUID: localStorage.uuid,
+        uuid: "",
     }
     Static.postResponse = {
         documentsInserted: 0,

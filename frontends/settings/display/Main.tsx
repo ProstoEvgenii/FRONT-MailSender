@@ -165,6 +165,7 @@ export default function () {
           <button
             class="butn btn__primary"
             onclick={() => {
+              Static.settingsForm.UUID = localStorage.uuid
               Func.validateForm()
             }}
           >
@@ -260,7 +261,10 @@ export default function () {
                     } else {
                       Static.eventForm.isDaily = false
                     }
+                    Static.eventForm.uuid = localStorage.uuid
                     Func.validateFormEvent()
+                    // console.log('=5a838e=', localStorage.uuid)
+                    
                     Ref.newEvent.classList.add("hidden")
                     Static.add = false
                   }
