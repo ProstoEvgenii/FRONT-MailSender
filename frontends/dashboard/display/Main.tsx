@@ -1,7 +1,34 @@
 import { Cemjsx, Static, front, Fn, Func, Ref } from "cemjs-all"
 import letter from '@images/ann/letter.jpg'
 import email from '@svg/ann/email.svg'
+const RenderOptionsFromArray = function ({ items }) {
+  if (!items) {
+    return (
+      < select name="" id="" >
+        <option value="" >Выберите шаблон</option>
+        <option value="">Не найдены</option>
+      </select>
+    )
+  }
+  return (
+    < select name="" id=""
+      ref="template"
+      onchange={(e) => {
+        //  = e.target.value
+      }}
+    >
+      <option value="">Выберите шаблон</option>
+      {
+        items.map((item, index) => {
+          return (
+            <option value={item}>{item}</option>
+          )
 
+        })
+      }
+    </select >
+  )
+}
 export default function () {
   return (
     <div class="info_inner">
@@ -133,8 +160,11 @@ export default function () {
         <p class="info_preview__title">Превью письма</p>
         <img src={letter} alt="Образец письма" />
       </div>
-      <div >
+      <div class="info_sendtest_form">
         <div class="info_send">
+          <div>
+            <RenderOptionsFromArray items={Static.record ? Static.record.templates : []} />
+          </div>
           <div class="input_field">
             <input type="email"
               placeholder="Введите email:"
@@ -148,9 +178,13 @@ export default function () {
           <button
             class="btn btn__primary"
             onclick={() => {
-              if (Ref.inputEmail.value != "") {
+              console.log('=eea054=', Ref.template.value)
+              if (Ref.inputEmail.value && Ref.template.value) {
                 Static.sendTo = Ref.inputEmail.value
+                Static.sendTemplate = Ref.template.value
                 Func.makeRequest()
+              } else {
+                alert("Убедитесь, что все поля для отправки тестового сообщения заполнены.")
               }
             }}
           >

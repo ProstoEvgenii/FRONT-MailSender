@@ -8,14 +8,14 @@ front.listener.finish = () => {
 
 front.func.getURL = function () {
     let url = `api/Dashboard?uuid=${localStorage.uuid}`
+
+    if (Static.sendTemplate != null) {
+        url += `&sendTemplate=${Static.sendTemplate}`
+    }
     if (Static.sendTo != null) {
         url += `&sendTo=${Static.sendTo}`
     }
-    if (Static.SendAutoAt != null) {
-        url += `&sendAutoAt=${Static.SendAutoAt}`
-    }
-
-    Static.SendAutoAt = null
+    Static.sendTemplate = null
     Static.sendTo = null
     return url
 }
@@ -27,12 +27,7 @@ front.func.sendPost = async function (route, body) {
     var responseData = await response.json()
     Func.makeRequest()
     Fn.init()
-    // if (!response.ok) {
-    //   this.init()
-    //   throw new Error(`Ошибка по адресу , статус ошибки ${response.status}`);
-    // }
     return responseData
-
 }
 
 front.func.updateBD = async function (route, body) {
@@ -60,8 +55,8 @@ front.loader = () => {
     Static.usersAdded = []
 
 
-    Static.SendAutoAt = null
     Static.sendTo = null
+    Static.sendTemplate = null
     Func.makeRequest()
     return
 }

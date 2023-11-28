@@ -82,15 +82,17 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
       justify-content: space-between;
       align-items: center;
       gap: 1vw;
-      .inputs_form{
+
+      .inputs_form {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1vw;
       }
 
-      
+
     }
+
     .upload_response {
       display: flex;
       justify-content: center;
@@ -99,12 +101,14 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     .toggle_row {
       display: flex;
       align-items: center;
-      .minutes{
+
+      .minutes {
         font-size: 1.2rem;
         font-family: inherit;
-      color: var(--greyDark);
-      text-align: left;
+        color: var(--greyDark);
+        text-align: left;
       }
+
       p {
         font-size: 0.9rem;
         font-weight: 500;
@@ -222,11 +226,18 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     }
   }
 
+  &_sendtest_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+  }
+
   &_send {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-    gap: 1.5vw;
+    gap: 1vw;
   }
 
   &_send__response {
