@@ -177,8 +177,8 @@ export default function () {
           <button
             class="btn btn__primary"
             onclick={() => {
-              console.log('=inputEmail=', Ref.inputEmail.value)
-              console.log('=template=', Ref.template.value)
+              // console.log('=inputEmail=', Ref.inputEmail.value)
+              // console.log('=template=', Ref.template.value)
               if (Ref.inputEmail.value && Ref.template.value) {
                 Static.sendTo = Ref.inputEmail.value
                 Static.sendTemplate = Ref.template.value
