@@ -11,10 +11,10 @@ const RenderOptionsFromArray = function ({ items }) {
     )
   }
   return (
-    < select name="" id=""
+    < select name=""
       ref="template"
-      onchange={(e) => {
-        //  = e.target.value
+      oninput={(e) => {
+        Static.sendTemplate = e.target.value
       }}
     >
       <option value="">Выберите шаблон</option>
@@ -23,7 +23,6 @@ const RenderOptionsFromArray = function ({ items }) {
           return (
             <option value={item}>{item}</option>
           )
-
         })
       }
     </select >
@@ -178,7 +177,8 @@ export default function () {
           <button
             class="btn btn__primary"
             onclick={() => {
-              console.log('=eea054=', Ref.template.value)
+              console.log('=inputEmail=', Ref.inputEmail.value)
+              console.log('=template=', Ref.template.value)
               if (Ref.inputEmail.value && Ref.template.value) {
                 Static.sendTo = Ref.inputEmail.value
                 Static.sendTemplate = Ref.template.value
