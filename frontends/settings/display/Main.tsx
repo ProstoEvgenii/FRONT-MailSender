@@ -204,7 +204,9 @@ export default function () {
             <th class="history_table__cell">Дата отправки(dd.mm)</th>
             <th class="history_table__cell">Вкл/Выкл</th>
           </tr>
-          <tr ref="newEvent" class="hidden">
+          <tr ref="newEvent"
+            class={[Static.add ? "" : "hidden"]}
+          >
             <td class="history_table__cell">
             </td>
             <td class="history_table__cell">
@@ -262,11 +264,8 @@ export default function () {
                       Static.eventForm.isDaily = false
                     }
                     Static.eventForm.uuid = localStorage.uuid
-                    Func.validateFormEvent()
-                    // console.log('=5a838e=', localStorage.uuid)
-                    
-                    Ref.newEvent.classList.add("hidden")
                     Static.add = false
+                    Func.validateFormEvent()
                   }
                 }}
               >
@@ -276,8 +275,10 @@ export default function () {
                 class="butn btn__cancel "
                 onclick={() => {
                   if (Static.add) {
-                    Ref.newEvent.classList.add("hidden")
+                    // Ref.newEvent.classList.add("hidden")
                     Static.add = false
+                    Fn.init()
+
                   }
                 }}
               >
@@ -297,7 +298,6 @@ export default function () {
         class="butn btn__primary "
         onclick={async () => {
           Static.add = true
-          Ref.newEvent.classList.remove("hidden")
           Func.makeRequest()
         }}
       >
