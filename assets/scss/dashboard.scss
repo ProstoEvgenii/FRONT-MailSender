@@ -219,10 +219,15 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
       line-height: 125%;
     }
 
-    img {
+    // &_wrap {
+      
+    // }
+
+    iframe {
       height: 500px;
       border: 1px solid var(--primary);
       border-radius: 0.5rem;
+      width: 60%;
     }
   }
 

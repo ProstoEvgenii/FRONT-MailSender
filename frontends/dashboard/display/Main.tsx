@@ -4,24 +4,31 @@ import email from '@svg/ann/email.svg'
 const RenderOptionsFromArray = function ({ items }) {
   if (!items) {
     return (
-      < select name="" id="" >
+      < select>
         <option value="" >Выберите шаблон</option>
         <option value="">Не найдены</option>
       </select>
     )
   }
+  
   return (
-    < select name=""
+    < select
       ref="template"
       oninput={(e) => {
         Static.sendTemplate = e.target.value
+        if (Static.sendTemplate != ""){
+          Static.selectedTemplate = items.find(item => item.name === Static.sendTemplate)
+          Static.iframeContent = Static.selectedTemplate.indexHtml
+          Fn.init()
+        }
+        
       }}
     >
       <option value="">Выберите шаблон</option>
       {
         items.map((item, index) => {
           return (
-            <option value={item}>{item}</option>
+            <option value={item.name}>{item.name}</option>
           )
         })
       }
@@ -157,7 +164,10 @@ export default function () {
       </div>
       <div class="info_preview">
         <p class="info_preview__title">Превью письма</p>
-        <img src={letter} alt="Образец письма" />
+        <iframe frameborder="0" srcdoc={Static.iframeContent}
+        >
+        </iframe>
+
       </div>
       <div class="info_sendtest_form">
         <div class="info_send">
@@ -177,8 +187,6 @@ export default function () {
           <button
             class="btn btn__primary"
             onclick={() => {
-              // console.log('=inputEmail=', Ref.inputEmail.value)
-              // console.log('=template=', Ref.template.value)
               if (Ref.inputEmail.value && Ref.template.value) {
                 Static.sendTo = Ref.inputEmail.value
                 Static.sendTemplate = Ref.template.value

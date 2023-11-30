@@ -64,7 +64,7 @@ const RenderOptionsFromArray = function ({ items }) {
     )
   }
   return (
-    < select name="" id=""
+    < select
       onchange={(e) => {
         Static.eventForm.templateName = e.target.value
       }}
@@ -73,7 +73,7 @@ const RenderOptionsFromArray = function ({ items }) {
       {
         items.map((item, index) => {
           return (
-            <option value={item}>{item}</option>
+            <option value={item.name}>{item.name}</option>
           )
 
         })
