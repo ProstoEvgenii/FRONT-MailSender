@@ -26,6 +26,7 @@ const RenderTable = function ({ items }) {
               <td class="history_table__cell">{item.DateOfBirth}</td>
               <td class="history_table__cell">{item.Email}</td>
               <td class="history_table__cell">{item.DateCreate}</td>
+              <td class="history_table__cell">{item.Status}</td>
             </tr>
           )
         })
@@ -52,10 +53,6 @@ export default function () {
           {
             Static.response == null ? <p class="history_info__text"><span class="bold"></span></p> :
               <p class="history_info__text">Сегодня: <span class="bold">{Static.response?.todayLogsCount}</span></p>
-          }
-          {
-            Static.response == null ? <p class="history_info__text"><span class="bold"></span></p> :
-              <p class="history_info__text">Завтра: <span class="bold">{Static.response?.tommorowLogsCount}</span></p>
           }
         </div>
       </div>
@@ -86,6 +83,7 @@ export default function () {
               <th class="history_table__cell">Дата рождения</th>
               <th class="history_table__cell">Email</th>
               <th class="history_table__cell">Дата отправки</th>
+              <th class="history_table__cell">Статус отправки</th>
             </tr>
           </thead>
           <RenderTable items={Static.records} />
